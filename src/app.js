@@ -8,10 +8,13 @@
 import { renderAgesMap } from "./ages-map.js";
 import { lotus, chakra, divider, illuminate } from "./ornament.js";
 
-// mount the illuminated hero ornament in the film's reverential spirit
+// mount the illuminated hero ornament. The centrepiece is a REAL Blender-baked
+// carved lotus/chakra relief (public/img/art/lotus-medallion.png — our own
+// geometry + Cycles lighting), flanked by the original SVG chakras.
 function mountOrnament() {
   const crown = document.getElementById("hero-crown");
-  if (crown) crown.innerHTML = `${chakra(34)}${lotus(52)}${chakra(34)}`;
+  if (crown) crown.innerHTML =
+    `${chakra(30)}<img class="crown-medallion" src="public/img/art/lotus-medallion.png" alt="Carved lotus-chakra medallion (baked relief)" width="120" height="120" />${chakra(30)}`;
   const legend = document.querySelector(".honesty-legend");
   if (legend) legend.insertAdjacentHTML("afterend", divider());
   illuminate(document.querySelector(".ed-hero.illum"));
