@@ -35,8 +35,9 @@
     <p class="note">prototype · pure canvas, parallax silhouettes, drifting mist, a sinking sun · degrades to a still with reduced-motion</p>
   </div>
   <script type="module">
-    import { mountScene, sceneExile } from "./src/story-scene.js";
-    mountScene(document.getElementById("scene"), sceneExile);
+    import { mountScene, SCENES } from "./src/story-scene.js";
+    const which = new URLSearchParams(location.search).get("s") || "ram-story-exile";
+    mountScene(document.getElementById("scene"), SCENES[which] || SCENES["ram-story-exile"]);
   </script>
 </body>
 </html>
