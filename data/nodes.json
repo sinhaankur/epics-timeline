@@ -93,6 +93,12 @@
       "storyOrder": 1,
       "sources": [ { "cite": "Vālmīki Rāmāyaṇa, Bāla Kāṇḍa (Book 1).", "kind": "edition", "url": null } ],
       "proof": null,
+      "image": {
+        "src": "public/img/art/rama-breaking-bow.jpg",
+        "alt": "Rama breaking the bow of Shiva to win Sita — Raja Ravi Varma",
+        "credit": "Raja Ravi Varma (1848–1906), ‘Rama breaking the bow’. Public domain (PD-Art).",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ravi_Varma-Rama-breaking-bow.jpg"
+      },
       "links": [ { "to": "ram-story-exile", "rel": "precedes" } ],
       "tags": ["narrative"]
     },
@@ -121,6 +127,12 @@
       "storyOrder": 3,
       "sources": [ { "cite": "Vālmīki Rāmāyaṇa, Araṇya Kāṇḍa (Book 3).", "kind": "edition", "url": null } ],
       "proof": null,
+      "image": {
+        "src": "public/img/art/ravana-sita-jatayu.jpg",
+        "alt": "Ravana abducting Sita, opposed by Jatayu — Raja Ravi Varma",
+        "credit": "Raja Ravi Varma (1848–1906), ‘Jatayu Vadham’, oil on canvas, 1895. Public domain (PD-Art).",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ravi_Varma-Ravana_Sita_Jathayu.jpg"
+      },
       "links": [ { "to": "ram-story-war", "rel": "precedes" } ],
       "tags": ["narrative"]
     },
@@ -164,6 +176,12 @@
       "storyOrder": 2,
       "sources": [ { "cite": "Mahābhārata, Vana & Virāṭa Parvas (Books 3–4).", "kind": "edition", "url": null } ],
       "proof": null,
+      "image": {
+        "src": "public/img/art/sairandhri-draupadi.jpg",
+        "alt": "Draupadi as Sairandhri during the year in disguise — Raja Ravi Varma",
+        "credit": "Raja Ravi Varma (1848–1906), ‘Sairandhri’ (Draupadi in disguise, Virāṭa Parva). Public domain (PD-Art).",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sairandhri,_by_Raja_Ravi_Varma.jpg"
+      },
       "links": [ { "to": "mbh-story-kurukshetra", "rel": "precedes" } ],
       "tags": ["narrative"]
     },

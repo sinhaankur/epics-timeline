@@ -95,14 +95,19 @@ function nodeCard(n) {
   const contested = conf === "contested" ? `<span class="stance-tag conf-contested">contested</span>` : "";
   const proof = n.proof
     ? `<span class="has-proof">◆ <b>proof:</b> ${esc(n.proof.establishes)}</span>` : "";
-  return `<article class="node" data-id="${esc(n.id)}" data-stance="${esc(n.stance)}" data-confidence="${esc(conf||"")}">
-    <div class="node-top">
-      ${dateStr ? `<span class="node-date">${dateStr}</span>` : ""}
-      ${order} ${stanceTag} ${contested}
+  const thumb = n.image
+    ? `<div class="node-art"><img src="${esc(n.image.src)}" alt="${esc(n.image.alt)}" loading="lazy" /></div>` : "";
+  return `<article class="node${n.image ? " has-art" : ""}" data-id="${esc(n.id)}" data-stance="${esc(n.stance)}" data-confidence="${esc(conf||"")}">
+    ${thumb}
+    <div class="node-textcol">
+      <div class="node-top">
+        ${dateStr ? `<span class="node-date">${dateStr}</span>` : ""}
+        ${order} ${stanceTag} ${contested}
+      </div>
+      <h3>${esc(n.title)}</h3>
+      <p>${esc(n.summary)}</p>
+      ${proof}
     </div>
-    <h3>${esc(n.title)}</h3>
-    <p>${esc(n.summary)}</p>
-    ${proof}
   </article>`;
 }
 
@@ -136,6 +141,12 @@ function openSheet(id) {
     ? `<span class="chip chip-tradition">tradition</span>`
     : `<span class="chip chip-scholarship">scholarship</span>`;
 
+  const art = n.image ? `
+    <figure class="sheet-art">
+      <img src="${esc(n.image.src)}" alt="${esc(n.image.alt)}" />
+      <figcaption>${esc(n.image.credit)}${n.image.sourceUrl ? ` · <a href="${esc(n.image.sourceUrl)}" target="_blank" rel="noopener">source</a>` : ""}</figcaption>
+    </figure>` : "";
+
   const sheet = document.getElementById("sheet");
   sheet.innerHTML = `
     <button class="close" aria-label="Close">×</button>
@@ -143,6 +154,7 @@ function openSheet(id) {
     <h3>${esc(n.title)}</h3>
     ${n.date ? `<p class="sheet-date">${esc(n.date.display)}</p>` : ""}
     ${dateNote}
+    ${art}
     <p class="sheet-summary">${esc(n.summary)}</p>
     <section>
       <h4>Sources</h4>

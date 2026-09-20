@@ -337,3 +337,26 @@ body > * { position: relative; z-index: 1; }
 .track-head h2::before {
   content: "❖"; color: var(--halo-gold, #cba233); margin-right: 8px; font-size: .8em; vertical-align: middle;
 }
+
+/* ============================================================================
+   PHASE 2 — open-licensed classical art (Raja Ravi Varma, public domain).
+   Art in the cards + a plate in the detail sheet, always credited. */
+.node.has-art { display: grid; grid-template-columns: 96px 1fr; gap: var(--sp-4); align-items: start; }
+.node-art {
+  width: 96px; height: 120px; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--halo-gold, #cba233) 40%, transparent);
+  box-shadow: var(--shadow-sm); background: var(--muted);
+}
+.node-art img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; filter: saturate(1.03); transition: transform .3s var(--ease-out, ease); }
+.node.has-art:hover .node-art img { transform: scale(1.05); }
+
+.sheet-art { margin: var(--sp-4) 0; }
+.sheet-art img {
+  width: 100%; border-radius: var(--radius); display: block;
+  border: 1px solid color-mix(in oklab, var(--halo-gold, #cba233) 45%, transparent);
+  box-shadow: var(--shadow-md);
+}
+.sheet-art figcaption { margin-top: var(--sp-2); font-family: var(--font-mono); font-size: var(--fs-3xs); color: var(--muted-foreground); line-height: 1.4; }
+.sheet-art figcaption a { border: none; color: var(--accent); }
+
+@media (max-width: 480px) { .node.has-art { grid-template-columns: 72px 1fr; } .node-art { width: 72px; height: 92px; } }
