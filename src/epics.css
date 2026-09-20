@@ -203,3 +203,83 @@
   .map-lane { grid-template-columns: 74px 1fr; }
   .lane-label { font-size: 8px; }
 }
+
+/* ============================================================================
+   AGES MAP — "make it awesome": fresco backdrop, cinematic reveal, glowing
+   proof diamonds, evidence-threads, a BCE·CE meridian, age-focus dimming.
+   Motion honours prefers-reduced-motion (falls back to static). */
+.ages-map { position: relative; padding: var(--sp-4) 0 var(--sp-2); }
+
+/* a warm lime-plaster fresco wash behind the whole map (Gupta soul) */
+.fresco-sky {
+  position: absolute; inset: -12px -12px auto -12px; height: 120px; z-index: 0;
+  background:
+    radial-gradient(120% 90% at 20% 0%, color-mix(in oklab, var(--halo-gold, #cba233) 22%, transparent), transparent 60%),
+    radial-gradient(120% 90% at 85% 0%, color-mix(in oklab, var(--gupta-rose, #d98a6a) 18%, transparent), transparent 55%);
+  filter: blur(6px); opacity: .8; pointer-events: none;
+}
+
+.age-strip { position: relative; z-index: 1; height: 52px; }
+.age-band {
+  position: absolute; top: 0; bottom: 0; padding: 6px 9px; overflow: hidden;
+  background: color-mix(in oklab, var(--tint) 30%, var(--card));
+  border-left: 1px solid color-mix(in oklab, var(--tint) 60%, transparent);
+  display: flex; flex-direction: column; justify-content: center; min-width: 0;
+  transform-origin: left center; animation: bandIn .6s var(--ease-out, cubic-bezier(.2,.7,.2,1)) both;
+  animation-delay: calc(var(--i) * 70ms);
+  transition: filter .25s, opacity .25s, box-shadow .25s;
+}
+.age-band:hover { box-shadow: inset 0 -3px 0 color-mix(in oklab, var(--tint) 70%, transparent); z-index: 3; }
+.age-note {
+  display: none; font-family: var(--font-sans); font-size: 10px; color: var(--muted-foreground);
+  line-height: 1.35; margin-top: 2px;
+}
+.age-band:hover .age-note { display: block; }
+.age-band:hover .age-range { display: none; }
+.ages-map.age-focus .age-band:not(:hover) { filter: grayscale(.5) brightness(.96); opacity: .5; }
+@keyframes bandIn { from { opacity: 0; transform: scaleX(.6); } to { opacity: 1; transform: scaleX(1); } }
+
+.axis { position: relative; z-index: 1; }
+.axis-tick.is-meridian { color: var(--accent-ink); font-weight: 600; }
+
+/* the map body holds the meridian, threads and lanes in one positioned box */
+.map-body { position: relative; z-index: 1; }
+.meridian { position: absolute; top: -4px; bottom: 10px; width: 0; border-left: 1px dashed color-mix(in oklab, var(--accent) 55%, transparent); z-index: 0; }
+.meridian span {
+  position: absolute; top: -2px; left: 4px; font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: .1em; color: var(--accent-ink); white-space: nowrap;
+}
+
+/* evidence threads overlay — faint gold curves proof → supported node */
+.ev-threads { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; overflow: visible; }
+.ev-thread {
+  fill: none; stroke: color-mix(in oklab, var(--accent) 55%, transparent); stroke-width: .35;
+  vector-effect: non-scaling-stroke; stroke-dasharray: 3 3; opacity: 0;
+  animation: threadIn .8s ease .9s forwards;
+}
+@keyframes threadIn { to { opacity: .7; } }
+
+.map-lane { position: relative; z-index: 2; min-height: 50px; }
+
+/* markers rise + fade in, staggered by --i; proofs get a warm halo */
+.map-marker { animation: markIn .5s var(--ease-out, cubic-bezier(.2,.7,.2,1)) both; animation-delay: calc(.3s + var(--i) * 45ms); }
+@keyframes markIn { from { opacity: 0; transform: translate(-50%, 8px); } to { opacity: 1; transform: translateX(-50%); } }
+.marker-range { animation: rangeIn .5s ease both; animation-delay: calc(.3s + var(--i) * 45ms); }
+@keyframes rangeIn { from { opacity: 0; transform: scaleX(.2); } to { opacity: 1; transform: scaleX(1); } }
+.map-marker.has-proof::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 22px; height: 22px;
+  transform: translate(-50%,-50%); border-radius: 50%; z-index: -1;
+  background: radial-gradient(circle, color-mix(in oklab, var(--accent) 40%, transparent), transparent 70%);
+  opacity: .0; transition: opacity .2s;
+}
+.map-marker.has-proof:hover::after { opacity: 1; }
+.mk-diamond.has-proof::before { box-shadow: 0 0 0 3px var(--background), 0 0 10px color-mix(in oklab, var(--accent) 60%, transparent); }
+.map-marker.is-contested::before { border: 1.5px dashed color-mix(in oklab, var(--stance-contested) 80%, #000); }
+
+.map-legend .lg.ev-key { width: 16px; height: 0; border: none; border-top: 1.5px dashed color-mix(in oklab, var(--accent) 60%, transparent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .age-band, .map-marker, .marker-range, .ev-thread { animation: none !important; opacity: 1 !important; transform: translateX(-50%) !important; }
+  .age-band { transform: none !important; }
+  .ev-thread { opacity: .6 !important; }
+}
