@@ -6,6 +6,16 @@
  * All original; the scholarship is cited to its authors in the data. */
 
 import { renderAgesMap } from "./ages-map.js";
+import { lotus, chakra, divider, illuminate } from "./ornament.js";
+
+// mount the illuminated hero ornament in the film's reverential spirit
+function mountOrnament() {
+  const crown = document.getElementById("hero-crown");
+  if (crown) crown.innerHTML = `${chakra(34)}${lotus(52)}${chakra(34)}`;
+  const legend = document.querySelector(".honesty-legend");
+  if (legend) legend.insertAdjacentHTML("afterend", divider());
+  illuminate(document.querySelector(".ed-hero.illum"));
+}
 
 const TRACKS = [
   { key: "text",       title: "Textual & manuscript history", desc: "How the text itself grew — oral roots, layers, recensions, critical editions." },
@@ -30,6 +40,7 @@ async function load() {
       `<p class="empty">Could not load the data. Serve this folder over http (e.g. <code>python3 -m http.server</code>) rather than opening the file directly.</p>`;
     return;
   }
+  mountOrnament();
   wireFilters();
   wireViewToggle();
   render();
