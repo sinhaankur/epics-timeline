@@ -737,3 +737,44 @@ body > * { position: relative; z-index: 1; }
   .toolbar-right { width: 100%; justify-content: space-between; }
   #timeline { padding: var(--sp-3) 16px var(--sp-8); }
 }
+
+/* ============================================================================
+   MORE FRAMEWORK LAWS applied:
+   · Visibility of system status — live count + active-filter feedback
+   · Von Restorff (isolation) — PROOFS/EVIDENCE are the one thing that stands out
+   · Peak–End — a stronger empty state with a one-tap recovery */
+
+/* system status */
+.status-count { font-family: var(--font-mono); font-size: var(--fs-3xs); color: var(--muted-foreground); white-space: nowrap; }
+.filter-details summary.has-active { border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.filter-details summary.has-active::before { content: "● "; color: var(--accent); }
+
+/* Von Restorff — the PROOF track/lane/markers get the single distinct treatment.
+   Evidence is the spine of 'how real is this', so it alone carries the accent. */
+.map-lane[data-lane="proof"] { background: linear-gradient(90deg, color-mix(in oklab, var(--accent) 7%, transparent), transparent 60%); border-radius: var(--radius); }
+.map-lane[data-lane="proof"] .lane-label { color: var(--accent-ink); font-weight: 600; }
+.track-block:has(.node[data-stance]) .track-head h2 { }         /* no-op guard */
+/* proof node cards (list view): a warm left rule + the ◆ glyph emphasised */
+.node .has-proof { color: var(--accent-ink); font-weight: 500; }
+.node .has-proof b { color: var(--accent); }
+/* the Proofs track heading gets the isolation mark */
+#timeline .track-block:nth-of-type(1) { }                        /* order varies; use data below */
+
+/* empty state — Peak/End: a clear, kind recovery, not a dead end */
+.empty { text-align: center; padding: var(--sp-10) 0; color: var(--muted-foreground); }
+.empty p { font-style: italic; margin: 0 0 var(--sp-4); }
+.empty-reset {
+  font-family: var(--font-mono); font-size: var(--fs-2xs); padding: 8px 18px;
+  background: var(--accent); color: #fff; border: none; border-radius: var(--radius-full); cursor: pointer;
+}
+.empty-reset:hover { background: var(--accent-ink); }
+
+/* Von Restorff — proofs are the isolated, distinct track (list view) */
+.track-block[data-track="proof"] .track-head h2 { color: var(--accent-ink); }
+.track-block[data-track="proof"] .track-head h2::after {
+  content: " ◆ evidence"; font-family: var(--font-mono); font-size: 0.5em; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent); vertical-align: middle; margin-left: 8px; font-weight: 500;
+}
+.track-block[data-track="proof"] .node { border-left: 3px solid color-mix(in oklab, var(--accent) 45%, transparent); }
+/* map: proof markers slightly larger + brighter so evidence pops */
+.map-lane[data-lane="proof"] .map-marker::before { box-shadow: 0 0 0 3px var(--background), 0 0 8px color-mix(in oklab, var(--accent) 55%, transparent); }

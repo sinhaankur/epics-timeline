@@ -66,10 +66,32 @@ function sortNodes(list, trackKey) {
   });
 }
 
+// FRAMEWORK — Visibility of system status: show what's filtered + the count,
+// and reflect active filters on the Filter control (a Von-Restorff dot).
+function updateStatus(shown) {
+  const active = ["epic", "track", "stance"].filter((d) => state[d] !== "all");
+  const sum = document.querySelector(".filter-details summary");
+  if (sum) sum.classList.toggle("has-active", active.length > 0);
+  const chip = document.getElementById("status-count");
+  if (chip) {
+    const label = active.length
+      ? `${shown.length} of ${state.nodes.length} · ${active.map((d) => state[d]).join(" · ")}`
+      : `${state.nodes.length} entries · all shown`;
+    chip.textContent = label;
+  }
+}
+
 function render() {
   const root = document.getElementById("timeline");
   const shown = state.nodes.filter(passes);
-  if (!shown.length) { root.innerHTML = `<p class="empty">No nodes match these filters.</p>`; return; }
+  updateStatus(shown);
+  if (!shown.length) {
+    root.innerHTML = `<div class="empty"><p>Nothing matches these filters.</p>
+      <button class="empty-reset" id="empty-reset">Clear filters</button></div>`;
+    const r = document.getElementById("empty-reset");
+    if (r) r.addEventListener("click", clearFilters);
+    return;
+  }
 
   if (state.view === "map") { renderAgesMap(root, shown, state.ages, openSheet); return; }
   if (state.view === "geo") { renderGeoMap(root, shown, openSheet); return; }
@@ -80,7 +102,7 @@ function render() {
   for (const tr of tracksToShow) {
     const inTrack = sortNodes(shown.filter((n) => n.track === tr.key), tr.key);
     if (!inTrack.length) continue;
-    html += `<section class="track-block">
+    html += `<section class="track-block" data-track="${esc(tr.key)}">
       <div class="track-head"><h2>${esc(tr.title)}</h2><span class="track-desc">${esc(tr.desc)}</span></div>
       <div class="track-rail">${inTrack.map(nodeCard).join("")}</div>
     </section>`;
@@ -230,6 +252,13 @@ function wireFilters() {
   });
   document.getElementById("scrim").addEventListener("click", closeSheet);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSheet(); });
+}
+
+function clearFilters() {
+  state.epic = "all"; state.track = "all"; state.stance = "all";
+  document.querySelectorAll(".filter").forEach((b) =>
+    b.classList.toggle("is-on", b.dataset.value === "all"));
+  render();
 }
 
 /* ---------- view toggle (Ages map ⇄ track list) ---------- */
