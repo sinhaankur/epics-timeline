@@ -6,6 +6,7 @@
  * All original; the scholarship is cited to its authors in the data. */
 
 import { renderAgesMap } from "./ages-map.js";
+import { renderGeoMap } from "./geo-map.js";
 import { lotus, chakra, divider, illuminate } from "./ornament.js";
 import { SCENES, mountScene } from "./story-scene.js";
 
@@ -73,6 +74,7 @@ function render() {
   if (!shown.length) { root.innerHTML = `<p class="empty">No nodes match these filters.</p>`; return; }
 
   if (state.view === "map") { renderAgesMap(root, shown, state.ages, openSheet); return; }
+  if (state.view === "geo") { renderGeoMap(root, shown, openSheet); return; }
 
   const tracksToShow = state.track === "all" ? TRACKS : TRACKS.filter((t) => t.key === state.track);
   let html = "";

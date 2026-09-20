@@ -241,6 +241,7 @@
       "proof": null,
       "fidelity": { "value": 80, "note": "Follows Vālmīki's arc closely but is an independent Tamil devotional reworking — a rough gauge, not a hard number." },
       "region": "Tamil Nadu (India)",
+      "place": { "name": "Tamil Nadu (India)", "lat": 10.79, "lon": 78.7 },
       "links": [ { "to": "ram-valmiki-composition", "rel": "retells" } ],
       "tags": ["regional", "Tamil", "retelling"]
     },
@@ -257,6 +258,7 @@
       "proof": null,
       "fidelity": { "value": 35, "note": "Same core figures but major departures (siblings, no Rāvaṇa/Laṅkā). Rough gauge." },
       "region": "Buddhist canon (South Asia → Asia)",
+      "place": { "name": "Buddhist canon — via Magadha (Bihar)", "lat": 25.03, "lon": 85.0 },
       "links": [ { "to": "ram-valmiki-composition", "rel": "parallels" } ],
       "tags": ["Buddhist", "Jataka", "spread", "contested"]
     },
@@ -290,6 +292,7 @@
       "proof": null,
       "fidelity": { "value": 20, "note": "Not a retelling — ethical fragments + a likely Hanumān→Sun Wukong influence. Rough gauge." },
       "region": "China",
+      "place": { "name": "China (via Buddhist translation centres)", "lat": 34.27, "lon": 108.95 },
       "links": [ { "to": "ram-valmiki-composition", "rel": "influenced-by" } ],
       "tags": ["China", "Buddhist", "spread", "influence"]
     },
@@ -306,6 +309,7 @@
       "proof": null,
       "fidelity": { "value": 25, "note": "Heavily localised names & framing; only the core rescue survives. Rough gauge." },
       "region": "Japan",
+      "place": { "name": "Japan (Heian-era Buddhist collections)", "lat": 35.01, "lon": 135.77 },
       "links": [ { "to": "ram-valmiki-composition", "rel": "influenced-by" } ],
       "tags": ["Japan", "Buddhist", "spread", "localised"]
     },
@@ -339,6 +343,7 @@
       "proof": null,
       "fidelity": { "value": 55, "note": "Same skeleton, but kingship/warfare emphasised over renunciation. Rough gauge." },
       "region": "Thailand",
+      "place": { "name": "Ayutthaya, Thailand", "lat": 14.35, "lon": 100.58 },
       "links": [ { "to": "ram-valmiki-composition", "rel": "retells" } ],
       "tags": ["Southeast Asia", "Thailand", "spread"]
     },
@@ -355,6 +360,7 @@
       "proof": null,
       "fidelity": { "value": 40, "note": "Recognisable but fully Buddhicised, Hindu frame gone. Rough gauge." },
       "region": "Laos",
+      "place": { "name": "Luang Prabang, Laos", "lat": 19.89, "lon": 102.14 },
       "links": [ { "to": "dasaratha-jataka", "rel": "framed-as" }, { "to": "ram-valmiki-composition", "rel": "retells" } ],
       "tags": ["Southeast Asia", "Laos", "spread"]
     },

@@ -506,3 +506,45 @@ body > * { position: relative; z-index: 1; }
   box-shadow: var(--shadow-md); background: #140b12;
 }
 .sheet-scene figcaption { margin-top: var(--sp-2); font-family: var(--font-mono); font-size: var(--fs-3xs); color: var(--muted-foreground); }
+
+/* ============================================================================
+   GEOGRAPHIC MAP — the spread across Asia (pure SVG, no tiles). */
+.geo-map { margin: var(--sp-4) 0 var(--sp-8); }
+.geo-head h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-lg); margin: 0 0 var(--sp-1); }
+.geo-head p { color: var(--muted-foreground); font-size: var(--fs-sm); max-width: 70ch; margin: 0 0 var(--sp-4); line-height: 1.55; }
+.geo-svg {
+  width: 100%; height: auto; display: block; border-radius: var(--radius-lg);
+  border: 1px solid var(--border-strong); box-shadow: var(--shadow-sm); background: var(--card);
+}
+.geo-sea { fill: color-mix(in oklab, var(--ajanta-lapis, #2a4a7a) 12%, var(--card)); }
+.geo-graticule line { stroke: var(--border); stroke-width: 0.5; opacity: 0.6; }
+.geo-land { fill: color-mix(in oklab, var(--tint, #c8a35a) 30%, var(--muted)); stroke: color-mix(in oklab, var(--halo-gold,#cba233) 40%, transparent); stroke-width: 0.6; }
+
+/* diffusion arcs draw in, staggered */
+.geo-arc { fill: none; stroke-width: 1.4; opacity: 0; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke;
+  animation: geoArc .9s ease forwards; animation-delay: calc(.4s + var(--i) * 90ms); }
+@keyframes geoArc { to { opacity: .55; } }
+
+/* the origin (undivided-India heartland) pulses gently */
+.geo-origin-dot { fill: var(--accent); stroke: #fff; stroke-width: 1.5; }
+.geo-origin-halo { fill: color-mix(in oklab, var(--accent) 30%, transparent); animation: geoPulse 3s ease-in-out infinite; transform-origin: center; }
+@keyframes geoPulse { 0%,100% { opacity: .35; r: 22; } 50% { opacity: .12; r: 30; } }
+.geo-origin-label { font-family: var(--font-mono); font-size: 12px; fill: var(--accent-ink); text-anchor: middle; font-weight: 600; }
+
+/* pins */
+.geo-pin { cursor: pointer; opacity: 0; animation: geoPin .5s ease forwards; animation-delay: calc(.6s + var(--i) * 90ms); }
+@keyframes geoPin { from { opacity: 0; } to { opacity: 1; } }
+.geo-halo { fill: color-mix(in oklab, var(--accent) 18%, transparent); opacity: 0; transition: opacity .2s; }
+.geo-pin:hover .geo-halo { opacity: 1; }
+.geo-dot { stroke: #fff; stroke-width: 1.2; }
+.geo-pin.is-contested .geo-dot { stroke: var(--stance-contested); stroke-width: 2; stroke-dasharray: 2 2; }
+.geo-label { font-family: var(--font-mono); font-size: 11px; fill: var(--foreground); text-anchor: middle; opacity: .85; paint-order: stroke; stroke: var(--card); stroke-width: 3px; }
+
+.geo-legend { margin-top: var(--sp-4); font-family: var(--font-mono); font-size: var(--fs-3xs); color: var(--muted-foreground); display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+.geo-legend .lg { display: inline-block; width: 11px; height: 11px; border-radius: 50%; }
+.geo-legend .lg.is-contested { background: transparent; border: 2px dashed var(--stance-contested); }
+
+@media (max-width: 680px) {
+  .geo-label { font-size: 14px; }        /* larger for small screens */
+  .geo-origin-label { font-size: 15px; }
+}
