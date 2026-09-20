@@ -497,3 +497,12 @@ body > * { position: relative; z-index: 1; }
   .view-toggle button { font-size: 10px; }
   .map-lane { grid-template-columns: 48px 1fr; }
 }
+
+/* Phase 3 — animated story scene as the sheet hero (film-frame, gilt border) */
+.sheet-scene { margin: var(--sp-4) 0; }
+.sheet-scene .scene-canvas {
+  width: 100%; aspect-ratio: 16/9; display: block; border-radius: var(--radius);
+  border: 1px solid color-mix(in oklab, var(--halo-gold, #cba233) 50%, transparent);
+  box-shadow: var(--shadow-md); background: #140b12;
+}
+.sheet-scene figcaption { margin-top: var(--sp-2); font-family: var(--font-mono); font-size: var(--fs-3xs); color: var(--muted-foreground); }

@@ -7,6 +7,7 @@
 
 import { renderAgesMap } from "./ages-map.js";
 import { lotus, chakra, divider, illuminate } from "./ornament.js";
+import { SCENES, mountScene } from "./story-scene.js";
 
 // mount the illuminated hero ornament. The centrepiece is a REAL Blender-baked
 // carved lotus/chakra relief (public/img/art/lotus-medallion.png — our own
@@ -154,7 +155,16 @@ function openSheet(id) {
     ? `<span class="chip chip-tradition">tradition</span>`
     : `<span class="chip chip-scholarship">scholarship</span>`;
 
-  const art = n.image ? `
+  // an ANIMATED story scene plays as the hero for in-story beats (Phase 3) — in
+  // the reverent spirit of the 1992 film. Falls back to the static painting.
+  const hasScene = !!SCENES[n.id];
+  const scene = hasScene ? `
+    <figure class="sheet-scene">
+      <canvas class="scene-canvas" data-scene="${esc(n.id)}"></canvas>
+      <figcaption>An original animation of this moment — art in the spirit of classical Indian painting.</figcaption>
+    </figure>` : "";
+
+  const art = (!hasScene && n.image) ? `
     <figure class="sheet-art">
       <img src="${esc(n.image.src)}" alt="${esc(n.image.alt)}" />
       <figcaption>${esc(n.image.credit)}${n.image.sourceUrl ? ` · <a href="${esc(n.image.sourceUrl)}" target="_blank" rel="noopener">source</a>` : ""}</figcaption>
@@ -167,6 +177,7 @@ function openSheet(id) {
     <h3>${esc(n.title)}</h3>
     ${n.date ? `<p class="sheet-date">${esc(n.date.display)}</p>` : ""}
     ${dateNote}
+    ${scene}
     ${art}
     <p class="sheet-summary">${esc(n.summary)}</p>
     ${fidelity}
@@ -182,6 +193,11 @@ function openSheet(id) {
   sheet.querySelector(".close").onclick = closeSheet;
   sheet.querySelectorAll("[data-goto]").forEach((a) =>
     a.addEventListener("click", (e) => { e.preventDefault(); openSheet(a.dataset.goto); }));
+  // bring the animated scene to life (once the canvas has a measured size)
+  const cv = sheet.querySelector(".scene-canvas");
+  if (cv && SCENES[cv.dataset.scene]) {
+    requestAnimationFrame(() => mountScene(cv, SCENES[cv.dataset.scene]));
+  }
 }
 function closeSheet() {
   document.getElementById("sheet").hidden = true;

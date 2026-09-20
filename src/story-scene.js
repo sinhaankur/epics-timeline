@@ -303,7 +303,190 @@ export function sceneAbduction(ctx, t, w, h) {
   ctx.fillStyle = vig; ctx.fillRect(0, 0, w, h);
 }
 
-export const SCENES = { "ram-story-exile": sceneExile, "ram-story-abduction": sceneAbduction };
+// THE WAR — two armies face off under a blood-dusk sky: ranks of spears &
+// banners, a rain of arrows arcing between them, dust. Used for Laṅkā and
+// Kurukṣetra. Grave, not gory — silhouettes and motion, no blood.
+export function sceneWar(ctx, t, w, h) {
+  // smoky blood-dusk sky
+  const sky = ctx.createLinearGradient(0, 0, 0, h);
+  sky.addColorStop(0, "#241019"); sky.addColorStop(0.5, "#5a2320"); sky.addColorStop(1, "#9a5028");
+  ctx.fillStyle = sky; ctx.fillRect(0, 0, w, h);
+  // low sun/haze of battle
+  const gx = w * 0.5, gy = h * 0.34;
+  const glow = ctx.createRadialGradient(gx, gy, 0, gx, gy, w * 0.5);
+  glow.addColorStop(0, "rgba(255,180,110,0.4)"); glow.addColorStop(1, "rgba(255,150,90,0)");
+  ctx.fillStyle = glow; ctx.fillRect(0, 0, w, h);
+
+  // drifting smoke
+  mist(ctx, w, h, h * 0.42, t, 24, 0.1);
+  mist(ctx, w, h, h * 0.58, t, -18, 0.08);
+
+  const groundY = h * 0.82;
+  // dark battlefield ground
+  ctx.fillStyle = "#160a10"; ctx.fillRect(0, groundY, w, h - groundY);
+
+  // an army rank: rows of spears + helmeted heads receding, with banners.
+  function army(baseX, dir, color, banner) {
+    for (let row = 3; row >= 0; row--) {
+      const ry = groundY - row * 10 - 6;
+      const scale = 1 - row * 0.14;
+      const alpha = 0.9 - row * 0.16;
+      ctx.save(); ctx.globalAlpha = alpha; ctx.fillStyle = color; ctx.strokeStyle = color;
+      for (let i = 0; i < 9; i++) {
+        const x = baseX + dir * (i * 26 + row * 8) + Math.sin(t * 2 + i + row) * 1.5;
+        // spear
+        ctx.lineWidth = 1.4 * scale;
+        ctx.beginPath(); ctx.moveTo(x, ry); ctx.lineTo(x + dir * 3, ry - 34 * scale); ctx.stroke();
+        // spearhead
+        ctx.beginPath(); ctx.moveTo(x + dir * 3, ry - 34 * scale); ctx.lineTo(x + dir * 5, ry - 30 * scale); ctx.lineTo(x + dir, ry - 30 * scale); ctx.closePath(); ctx.fill();
+        // helmeted head + shoulders
+        ctx.beginPath(); ctx.arc(x, ry - 8 * scale, 4 * scale, 0, TAU); ctx.fill();
+        ctx.fillRect(x - 4 * scale, ry - 4 * scale, 8 * scale, 6 * scale);
+      }
+      ctx.restore();
+      // a banner every rank
+      const bx = baseX + dir * (row * 8 + 40);
+      ctx.save(); ctx.globalAlpha = alpha;
+      ctx.strokeStyle = color; ctx.lineWidth = 1.6 * scale;
+      ctx.beginPath(); ctx.moveTo(bx, ry - 4); ctx.lineTo(bx, ry - 52 * scale); ctx.stroke();
+      ctx.fillStyle = banner;
+      const flag = new Path2D();
+      const wav = Math.sin(t * 4 + row) * 4;
+      flag.moveTo(bx, ry - 52 * scale);
+      flag.lineTo(bx + dir * 22 * scale, ry - 48 * scale + wav);
+      flag.lineTo(bx, ry - 40 * scale); flag.closePath();
+      ctx.fill(flag);
+      ctx.restore();
+    }
+  }
+  army(w * 0.06, 1, "#0c0509", "#c0432e");        // left army — crimson banners
+  army(w * 0.94, -1, "#0c0509", "#caa23a");       // right army — gold banners
+
+  // ARROW RAIN — a volley arcs from left to right and back, parabolic.
+  ctx.strokeStyle = "rgba(20,10,12,0.8)"; ctx.lineWidth = 1.2;
+  const volley = (t * 0.35) % 2;                   // 0..2, two directions
+  const dir = volley < 1 ? 1 : -1;
+  const prog = volley < 1 ? volley : volley - 1;
+  for (let i = 0; i < 40; i++) {
+    const u = (i / 40 + prog) % 1;
+    const x0 = dir > 0 ? w * 0.12 : w * 0.88;
+    const x1 = dir > 0 ? w * 0.88 : w * 0.12;
+    const x = lerp(x0, x1, u);
+    const arc = Math.sin(u * Math.PI);
+    const y = groundY - 40 - arc * (h * 0.32) + (i % 5) * 3;
+    const ax = dir * 8, ay = 6;                    // arrow slope along flight
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - ax, y - ay * (u < 0.5 ? -1 : 1)); ctx.stroke();
+  }
+
+  // occasional dust bursts on the ground line
+  for (let i = 0; i < 6; i++) {
+    const bx = (i * w * 0.17 + t * 12) % w;
+    const puff = Math.max(0, Math.sin(t * 1.3 + i) );
+    ctx.save(); ctx.globalAlpha = 0.12 * puff; ctx.fillStyle = "#d8b48a";
+    ctx.beginPath(); ctx.arc(bx, groundY - 6, 20 * puff, 0, TAU); ctx.fill(); ctx.restore();
+  }
+
+  // vignette
+  const vig = ctx.createRadialGradient(w / 2, h * 0.45, h * 0.28, w / 2, h * 0.55, h * 0.9);
+  vig.addColorStop(0, "rgba(0,0,0,0)"); vig.addColorStop(1, "rgba(8,2,6,0.62)");
+  ctx.fillStyle = vig; ctx.fillRect(0, 0, w, h);
+}
+
+// A LAMP-LIT HALL — for the dice game & court beats. Pillars, hanging lamps that
+// flicker, a low dais, seated silhouettes. Interior, intimate, tense.
+export function sceneHall(ctx, t, w, h) {
+  // warm sandstone interior wash
+  const bg = ctx.createLinearGradient(0, 0, 0, h);
+  bg.addColorStop(0, "#2a1a16"); bg.addColorStop(1, "#4a2c1e");
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, w, h);
+
+  const floorY = h * 0.78;
+  // floor
+  ctx.fillStyle = "#1c1009"; ctx.fillRect(0, floorY, w, h - floorY);
+  // a runner carpet down the middle
+  ctx.fillStyle = "#5a2320";
+  ctx.beginPath(); ctx.moveTo(w * 0.36, h); ctx.lineTo(w * 0.44, floorY); ctx.lineTo(w * 0.56, floorY); ctx.lineTo(w * 0.64, h); ctx.closePath(); ctx.fill();
+
+  // pillars receding
+  ctx.fillStyle = "#20130d";
+  for (const px of [0.1, 0.26, 0.74, 0.9]) {
+    const x = px * w;
+    ctx.fillRect(x - 10, h * 0.12, 20, floorY - h * 0.12);
+    // capital + base
+    ctx.fillRect(x - 15, h * 0.12, 30, 12);
+    ctx.fillRect(x - 15, floorY - 10, 30, 10);
+  }
+
+  // hanging oil lamps that flicker (warm pools of light)
+  for (const lx of [0.2, 0.5, 0.8]) {
+    const x = lx * w, y = h * 0.2 + Math.sin(t * 3 + lx * 10) * 2;
+    const flick = 0.75 + Math.sin(t * 12 + lx * 20) * 0.15 + Math.sin(t * 27 + lx) * 0.08;
+    ctx.strokeStyle = "#1a0f0a"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x, h * 0.12); ctx.lineTo(x, y); ctx.stroke();
+    const g = ctx.createRadialGradient(x, y, 0, x, y, 120 * flick);
+    g.addColorStop(0, `rgba(255,190,110,${0.5 * flick})`);
+    g.addColorStop(0.4, `rgba(240,150,80,${0.16 * flick})`);
+    g.addColorStop(1, "rgba(240,150,80,0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 120 * flick, 0, TAU); ctx.fill();
+    ctx.fillStyle = "#ffd27a"; ctx.beginPath(); ctx.arc(x, y, 4, 0, TAU); ctx.fill();
+  }
+
+  // a low dais with two seated silhouettes facing across a board (the dice)
+  const dY = floorY - 6;
+  ctx.fillStyle = "#0c0609";
+  // seated figure left
+  seated(ctx, w * 0.4, dY, 1.1, "#0c0609");
+  // seated figure right
+  seated(ctx, w * 0.6, dY, 1.1, "#0c0609");
+  // the board between them + rolling dice glint
+  ctx.fillStyle = "#3a2016"; ctx.fillRect(w * 0.47, dY - 6, w * 0.06, 6);
+  const dieX = w * 0.5 + Math.sin(t * 6) * w * 0.02;
+  ctx.fillStyle = "#e8d8b0"; ctx.fillRect(dieX - 3, dY - 10 - Math.abs(Math.sin(t * 6)) * 8, 6, 6);
+
+  // standing courtiers flanking, dim
+  ctx.globalAlpha = 0.7;
+  seated(ctx, w * 0.24, dY, 0.9, "#0a0508", true);
+  seated(ctx, w * 0.76, dY, 0.9, "#0a0508", true);
+  ctx.globalAlpha = 1;
+
+  // dust motes in the lamp light
+  ctx.fillStyle = "rgba(255,210,150,0.12)";
+  for (let i = 0; i < 30; i++) {
+    const mx = (i * 137 + t * 8) % w;
+    const my = (i * 53 + Math.sin(t + i) * 20) % (floorY);
+    ctx.fillRect(mx, my, 1.5, 1.5);
+  }
+
+  // vignette
+  const vig = ctx.createRadialGradient(w / 2, h * 0.5, h * 0.25, w / 2, h * 0.5, h * 0.85);
+  vig.addColorStop(0, "rgba(0,0,0,0)"); vig.addColorStop(1, "rgba(6,3,2,0.6)");
+  ctx.fillStyle = vig; ctx.fillRect(0, 0, w, h);
+}
+function seated(ctx, x, groundY, s, tint, standing) {
+  ctx.save(); ctx.translate(x, groundY); ctx.fillStyle = tint;
+  if (standing) {
+    ctx.fillRect(-5 * s, -46 * s, 10 * s, 46 * s);
+    ctx.beginPath(); ctx.arc(0, -52 * s, 6 * s, 0, TAU); ctx.fill();
+  } else {
+    // cross-legged base + torso
+    ctx.beginPath(); ctx.moveTo(-16 * s, 0); ctx.quadraticCurveTo(0, -6 * s, 16 * s, 0); ctx.lineTo(10 * s, -4 * s); ctx.lineTo(-10 * s, -4 * s); ctx.closePath(); ctx.fill();
+    ctx.fillRect(-7 * s, -30 * s, 14 * s, 28 * s);
+    ctx.beginPath(); ctx.arc(0, -37 * s, 6.5 * s, 0, TAU); ctx.fill();
+    // a small crown crest
+    ctx.beginPath(); ctx.moveTo(-6 * s, -42 * s); ctx.lineTo(0, -48 * s); ctx.lineTo(6 * s, -42 * s); ctx.closePath(); ctx.fill();
+  }
+  ctx.restore();
+}
+
+export const SCENES = {
+  "ram-story-exile": sceneExile,
+  "ram-story-abduction": sceneAbduction,
+  "ram-story-war": sceneWar,
+  "ram-story-birth": sceneHall,          // Ayodhyā court — the birth of a prince
+  "mbh-story-dice": sceneHall,           // the game of dice — the lamp-lit hall
+  "mbh-story-exile": sceneExile,         // the Pāṇḍavas' forest exile
+  "mbh-story-kurukshetra": sceneWar,     // the 18-day war
+};
 
 // mount a scene into a <canvas>; plays a slow loop, or a single still if the
 // user prefers reduced motion.
