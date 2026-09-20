@@ -570,3 +570,15 @@ body > * { position: relative; z-index: 1; }
 .tree-fid { font-family: var(--font-mono); font-size: 10px; fill: var(--accent-ink); text-anchor: end; font-weight: 600; }
 
 @media (max-width: 680px) { .tree-svg { min-width: 640px; } }
+
+/* the ŚLOKA block in the detail sheet — verse-level verifiability */
+.verse-sec { position: relative; }
+.verse-dev {
+  font-family: "Tiro Devanagari Sanskrit", serif; font-size: 1.15rem; line-height: 1.9;
+  color: var(--foreground); margin: 0 0 var(--sp-2);
+  padding: var(--sp-3) var(--sp-4); background: color-mix(in oklab, var(--halo-gold,#cba233) 8%, var(--surface));
+  border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0;
+}
+.verse-iast { font-family: var(--font-italic); font-style: italic; font-size: var(--fs-sm); color: var(--muted-foreground); margin: 0 0 var(--sp-2); }
+.verse-tr { font-size: var(--fs-sm); color: var(--foreground); margin: 0 0 var(--sp-1); line-height: 1.55; }
+.verse-src { font-family: var(--font-mono); font-size: var(--fs-3xs); color: var(--muted-foreground); margin: 0; }

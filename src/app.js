@@ -154,6 +154,17 @@ function openSheet(id) {
       <p class="note">${esc(n.fidelity.note)}</p>
     </section>` : "";
 
+  // the actual ŚLOKA (verse) — Devanagari + IAST + translation + exact reference,
+  // so a claim is verifiable at the verse level ("we need to be sure").
+  const verse = n.verse ? `
+    <section class="verse-sec">
+      <h4>The verse · ${esc(n.verse.ref)}</h4>
+      <p class="verse-dev">${esc(n.verse.devanagari).replace(/\n/g, "<br/>")}</p>
+      <p class="verse-iast">${esc(n.verse.iast)}</p>
+      <p class="verse-tr">“${esc(n.verse.translation)}”</p>
+      <p class="verse-src">${esc(n.verse.source)}</p>
+    </section>` : "";
+
   const dateNote = (n.date && n.date.note) ? `<p class="note">${esc(n.date.note)}</p>` : "";
   const stanceLabel = n.stance === "tradition"
     ? `<span class="chip chip-tradition">tradition</span>`
@@ -184,6 +195,7 @@ function openSheet(id) {
     ${scene}
     ${art}
     <p class="sheet-summary">${esc(n.summary)}</p>
+    ${verse}
     ${fidelity}
     <section>
       <h4>Sources</h4>

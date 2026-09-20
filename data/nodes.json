@@ -21,6 +21,13 @@
         { "cite": "Hiltebeitel, Alf (2001), Rethinking the Mahābhārata. Univ. of Chicago Press.", "kind": "book", "url": null }
       ],
       "proof": null,
+      "verse": {
+        "ref": "Mahābhārata 1.1.1 (Ādi Parva — the opening invocation)",
+        "devanagari": "नारायणं नमस्कृत्य नरं चैव नरोत्तमम् ।\nदेवीं सरस्वतीं व्यासं ततो जयमुदीरयेत् ॥",
+        "iast": "nārāyaṇaṃ namaskṛtya naraṃ caiva narottamam / devīṃ sarasvatīṃ vyāsaṃ tato jayam udīrayet",
+        "translation": "Having bowed to Nārāyaṇa and to Nara, the supreme among men, and to the goddess Sarasvatī and to Vyāsa — then let the Jaya (the Mahābhārata) be recited.",
+        "source": "Mahābhārata, BORI critical edition, Ādi Parva 1.1.1."
+      },
       "links": [ { "to": "mbh-critical-edition", "rel": "reconstructed-by" } ],
       "tags": ["oral tradition", "compilation"]
     },
@@ -211,6 +218,13 @@
       "storyOrder": null,
       "sources": [ { "cite": "Brockington, John (1998), The Sanskrit Epics. Leiden: Brill.", "kind": "book", "url": null } ],
       "proof": null,
+      "verse": {
+        "ref": "Bhagavad Gītā 2.47 (within Mahābhārata, Bhīṣma Parva)",
+        "devanagari": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥",
+        "iast": "karmaṇy evādhikāras te mā phaleṣu kadācana / mā karma-phala-hetur bhūr mā te saṅgo 'stv akarmaṇi",
+        "translation": "You have a right to your action alone, never to its fruits. Let not the fruit of action be your motive, nor let your attachment be to inaction.",
+        "source": "Bhagavad Gītā 2.47 (Bhīṣma Parva)."
+      },
       "links": [ { "to": "mbh-story-kurukshetra", "rel": "excerpted-from" } ],
       "tags": ["scripture", "commentary"]
     },
