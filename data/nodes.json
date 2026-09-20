@@ -1,0 +1,344 @@
+{
+  "meta": {
+    "title": "Rāmāyaṇa & Mahābhārata — a cited, multi-track timeline",
+    "description": "Textual history, in-story chronology, reception, traditional dating, and proofs — with scholarship and tradition kept distinct. Nothing here is presented as settled fact.",
+    "version": "0.1.0",
+    "lastUpdated": "2026-09-20",
+    "note": "Seed data. Contributions welcome — every node must carry a source; see data/SCHEMA.md."
+  },
+  "nodes": [
+    {
+      "id": "mbh-oral-tradition",
+      "epic": "mahabharata",
+      "track": "text",
+      "stance": "scholarship",
+      "title": "Oral bardic origins",
+      "summary": "Most scholars hold the Mahābhārata grew from an oral sūta (bardic) tradition before being written, expanding over centuries from a shorter core to its received ~100,000-verse length.",
+      "date": { "kind": "range", "startYear": -400, "endYear": 400, "display": "c. 400 BCE – 400 CE", "confidence": "scholarly-estimate", "note": "The window in which most scholars place the epic's compilation and growth." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Brockington, John (1998), The Sanskrit Epics. Leiden: Brill.", "kind": "book", "url": null },
+        { "cite": "Hiltebeitel, Alf (2001), Rethinking the Mahābhārata. Univ. of Chicago Press.", "kind": "book", "url": null }
+      ],
+      "proof": null,
+      "links": [ { "to": "mbh-critical-edition", "rel": "reconstructed-by" } ],
+      "tags": ["oral tradition", "compilation"]
+    },
+    {
+      "id": "mbh-critical-edition",
+      "epic": "mahabharata",
+      "track": "text",
+      "stance": "scholarship",
+      "title": "Bhandarkar (Poona) critical edition",
+      "summary": "Between 1919 and 1966 the Bhandarkar Oriental Research Institute in Pune collated hundreds of manuscripts to reconstruct the oldest recoverable common text of the Mahābhārata.",
+      "date": { "kind": "range", "startYear": 1919, "endYear": 1966, "display": "1919–1966 CE", "confidence": "documented", "note": "Publication span of the BORI critical edition, general editors V. S. Sukthankar then S. K. Belvalkar." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Sukthankar, V. S. et al. (eds.), The Mahābhārata (BORI critical edition, 1933–1966).", "kind": "critical-edition", "url": null }
+      ],
+      "proof": {
+        "what": "A reconstructed archetype collated from roughly 1,259 manuscripts.",
+        "establishes": "The oldest recoverable common written text of the epic.",
+        "doesNotEstablish": "That the narrated events happened, nor a single 'original' authored text or its absolute date."
+      },
+      "links": [ { "to": "mbh-oral-tradition", "rel": "reconstructs" } ],
+      "tags": ["recension", "philology", "manuscripts"]
+    },
+    {
+      "id": "ram-valmiki-composition",
+      "epic": "ramayana",
+      "track": "text",
+      "stance": "scholarship",
+      "title": "Composition of Vālmīki's Rāmāyaṇa",
+      "summary": "The core of the Vālmīki Rāmāyaṇa is generally dated by scholars to roughly the mid-first-millennium BCE, with Books 1 (Bāla) and 7 (Uttara) widely regarded as later additions to an original five-book core.",
+      "date": { "kind": "range", "startYear": -500, "endYear": -100, "display": "c. 5th–2nd century BCE (core)", "confidence": "scholarly-estimate", "note": "Datings vary; Books II–VI are usually held older than the framing Books I & VII." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Goldman, Robert P. (gen. ed.), The Rāmāyaṇa of Vālmīki, 7 vols. Princeton Univ. Press, 1984–2017.", "kind": "critical-edition", "url": null },
+        { "cite": "Brockington, John (1998), The Sanskrit Epics. Leiden: Brill.", "kind": "book", "url": null }
+      ],
+      "proof": null,
+      "links": [ { "to": "ram-critical-edition", "rel": "reconstructed-by" } ],
+      "tags": ["authorship", "layers"]
+    },
+    {
+      "id": "ram-critical-edition",
+      "epic": "ramayana",
+      "track": "text",
+      "stance": "scholarship",
+      "title": "Baroda critical edition of the Rāmāyaṇa",
+      "summary": "The Oriental Institute, Baroda produced a critical edition of the Vālmīki Rāmāyaṇa (1960–1975), the text basis for the Princeton translation project.",
+      "date": { "kind": "range", "startYear": 1960, "endYear": 1975, "display": "1960–1975 CE", "confidence": "documented", "note": "Critical edition, Oriental Institute, Baroda (M. S. University)." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Bhatt, G. H. & Shah, U. P. (eds.), The Vālmīki-Rāmāyaṇa (Baroda critical edition, 1960–1975).", "kind": "critical-edition", "url": null }
+      ],
+      "proof": {
+        "what": "A collated archetype from manuscripts across recensions (N & S).",
+        "establishes": "The oldest recoverable common text of Vālmīki's Rāmāyaṇa.",
+        "doesNotEstablish": "Historicity of the narrative or an absolute date of first composition."
+      },
+      "links": [ { "to": "ram-valmiki-composition", "rel": "reconstructs" } ],
+      "tags": ["recension", "philology"]
+    },
+
+    {
+      "id": "ram-story-birth",
+      "epic": "ramayana",
+      "track": "story",
+      "stance": "scholarship",
+      "title": "Rāma born in Ayodhyā",
+      "summary": "Within the narrative, Rāma is born a prince of Ayodhyā, eldest son of King Daśaratha.",
+      "date": null,
+      "storyOrder": 1,
+      "sources": [ { "cite": "Vālmīki Rāmāyaṇa, Bāla Kāṇḍa (Book 1).", "kind": "edition", "url": null } ],
+      "proof": null,
+      "links": [ { "to": "ram-story-exile", "rel": "precedes" } ],
+      "tags": ["narrative"]
+    },
+    {
+      "id": "ram-story-exile",
+      "epic": "ramayana",
+      "track": "story",
+      "stance": "scholarship",
+      "title": "Exile to the forest (14 years)",
+      "summary": "On the eve of his coronation, Rāma is exiled for fourteen years; Sītā and Lakṣmaṇa accompany him.",
+      "date": null,
+      "storyOrder": 2,
+      "sources": [ { "cite": "Vālmīki Rāmāyaṇa, Ayodhyā Kāṇḍa (Book 2).", "kind": "edition", "url": null } ],
+      "proof": null,
+      "links": [ { "to": "ram-story-abduction", "rel": "precedes" } ],
+      "tags": ["narrative"]
+    },
+    {
+      "id": "ram-story-abduction",
+      "epic": "ramayana",
+      "track": "story",
+      "stance": "scholarship",
+      "title": "Sītā abducted by Rāvaṇa",
+      "summary": "Rāvaṇa, king of Laṅkā, abducts Sītā; the search for her drives the rest of the epic.",
+      "date": null,
+      "storyOrder": 3,
+      "sources": [ { "cite": "Vālmīki Rāmāyaṇa, Araṇya Kāṇḍa (Book 3).", "kind": "edition", "url": null } ],
+      "proof": null,
+      "links": [ { "to": "ram-story-war", "rel": "precedes" } ],
+      "tags": ["narrative"]
+    },
+    {
+      "id": "ram-story-war",
+      "epic": "ramayana",
+      "track": "story",
+      "stance": "scholarship",
+      "title": "War in Laṅkā; return to Ayodhyā",
+      "summary": "With the vānara army, Rāma crosses to Laṅkā, defeats Rāvaṇa, recovers Sītā, and returns to be crowned in Ayodhyā.",
+      "date": null,
+      "storyOrder": 4,
+      "sources": [ { "cite": "Vālmīki Rāmāyaṇa, Yuddha Kāṇḍa (Book 6).", "kind": "edition", "url": null } ],
+      "proof": null,
+      "links": [],
+      "tags": ["narrative"]
+    },
+
+    {
+      "id": "mbh-story-dice",
+      "epic": "mahabharata",
+      "track": "story",
+      "stance": "scholarship",
+      "title": "The game of dice",
+      "summary": "The Pāṇḍavas lose their kingdom, and Draupadī is staked, in a rigged game of dice — the wrong that sets up the war.",
+      "date": null,
+      "storyOrder": 1,
+      "sources": [ { "cite": "Mahābhārata, Sabhā Parva (Book 2).", "kind": "edition", "url": null } ],
+      "proof": null,
+      "links": [ { "to": "mbh-story-exile", "rel": "precedes" } ],
+      "tags": ["narrative"]
+    },
+    {
+      "id": "mbh-story-exile",
+      "epic": "mahabharata",
+      "track": "story",
+      "stance": "scholarship",
+      "title": "Thirteen years of exile",
+      "summary": "The Pāṇḍavas spend twelve years in forest exile and a thirteenth in disguise before returning to claim their share.",
+      "date": null,
+      "storyOrder": 2,
+      "sources": [ { "cite": "Mahābhārata, Vana & Virāṭa Parvas (Books 3–4).", "kind": "edition", "url": null } ],
+      "proof": null,
+      "links": [ { "to": "mbh-story-kurukshetra", "rel": "precedes" } ],
+      "tags": ["narrative"]
+    },
+    {
+      "id": "mbh-story-kurukshetra",
+      "epic": "mahabharata",
+      "track": "story",
+      "stance": "scholarship",
+      "title": "The 18-day war at Kurukṣetra",
+      "summary": "The war between Pāṇḍavas and Kauravas lasts eighteen days; the Bhagavad Gītā is spoken on its first day.",
+      "date": null,
+      "storyOrder": 3,
+      "sources": [ { "cite": "Mahābhārata, Bhīṣma–Śalya Parvas (Books 6–9); Bhagavad Gītā within Book 6.", "kind": "edition", "url": null } ],
+      "proof": null,
+      "links": [],
+      "tags": ["narrative", "war"]
+    },
+
+    {
+      "id": "gita-within-mbh",
+      "epic": "mahabharata",
+      "track": "reception",
+      "stance": "scholarship",
+      "title": "Bhagavad Gītā becomes independently central",
+      "summary": "Though a section of the Bhīṣma Parva, the Gītā came to be read, commented on, and transmitted as a standalone scripture — the most-commented Hindu text.",
+      "date": { "kind": "range", "startYear": -200, "endYear": 200, "display": "c. 2nd c. BCE – 2nd c. CE (composition)", "confidence": "scholarly-estimate", "note": "Later commentary tradition (Śaṅkara, Rāmānuja) makes it central in its own right." },
+      "storyOrder": null,
+      "sources": [ { "cite": "Brockington, John (1998), The Sanskrit Epics. Leiden: Brill.", "kind": "book", "url": null } ],
+      "proof": null,
+      "links": [ { "to": "mbh-story-kurukshetra", "rel": "excerpted-from" } ],
+      "tags": ["scripture", "commentary"]
+    },
+    {
+      "id": "kalidasa-raghuvamsha",
+      "epic": "ramayana",
+      "track": "reception",
+      "stance": "scholarship",
+      "title": "Kālidāsa, Raghuvaṃśa",
+      "summary": "The classical poet Kālidāsa retells the Raghu dynasty (including Rāma's story) in courtly Sanskrit kāvya — an early literary reception of the Rāmāyaṇa.",
+      "date": { "kind": "range", "startYear": 350, "endYear": 470, "display": "c. 4th–5th century CE", "confidence": "scholarly-estimate", "note": "Kālidāsa's dates are themselves debated; commonly placed in the Gupta era." },
+      "storyOrder": null,
+      "sources": [ { "cite": "Kālidāsa, Raghuvaṃśa (ed. & trans. various).", "kind": "book", "url": null } ],
+      "proof": null,
+      "links": [ { "to": "ram-valmiki-composition", "rel": "retells" } ],
+      "tags": ["kavya", "retelling"]
+    },
+    {
+      "id": "kamban-ramavataram",
+      "epic": "ramayana",
+      "track": "reception",
+      "stance": "scholarship",
+      "title": "Kambaṉ, Rāmāvatāram (Tamil)",
+      "summary": "Kambaṉ's Tamil retelling (the Kamba Rāmāyaṇam) is a landmark of Tamil literature and a major regional reworking of the story.",
+      "date": { "kind": "range", "startYear": 1100, "endYear": 1200, "display": "c. 12th century CE", "confidence": "scholarly-estimate", "note": "Traditionally placed in the 12th century." },
+      "storyOrder": null,
+      "sources": [ { "cite": "Kambaṉ, Rāmāvatāram (Kamba Rāmāyaṇam).", "kind": "book", "url": null } ],
+      "proof": null,
+      "links": [ { "to": "ram-valmiki-composition", "rel": "retells" } ],
+      "tags": ["regional", "Tamil", "retelling"]
+    },
+    {
+      "id": "tulsidas-ramcharitmanas",
+      "epic": "ramayana",
+      "track": "reception",
+      "stance": "scholarship",
+      "title": "Tulsīdās, Rāmcaritmānas (Awadhi)",
+      "summary": "Tulsīdās's Awadhi devotional retelling (begun 1574 CE) is the most widely-recited Rāma text across North India and central to Rāmlīlā performance.",
+      "date": { "kind": "point", "startYear": 1574, "endYear": null, "display": "begun 1574 CE", "confidence": "documented", "note": "Composition begun at Ayodhyā, per the text's own colophon tradition." },
+      "storyOrder": null,
+      "sources": [ { "cite": "Tulsīdās, Rāmcaritmānas (1574 CE onward).", "kind": "book", "url": null } ],
+      "proof": null,
+      "links": [ { "to": "ram-valmiki-composition", "rel": "retells" } ],
+      "tags": ["bhakti", "Awadhi", "retelling"]
+    },
+    {
+      "id": "puranas-reception",
+      "epic": "both",
+      "track": "reception",
+      "stance": "scholarship",
+      "title": "The Purāṇas absorb and retell",
+      "summary": "The major Purāṇas (e.g. Viṣṇu, Bhāgavata) retell and frame both epics, embedding Rāma and Kṛṣṇa in the wider Vaiṣṇava avatāra scheme.",
+      "date": { "kind": "range", "startYear": 300, "endYear": 1000, "display": "c. 3rd–10th century CE", "confidence": "scholarly-estimate", "note": "Purāṇic composition spans many centuries." },
+      "storyOrder": null,
+      "sources": [ { "cite": "Rocher, Ludo (1986), The Purāṇas. Wiesbaden: Harrassowitz.", "kind": "book", "url": null } ],
+      "proof": null,
+      "links": [],
+      "tags": ["Puranas", "avatara"]
+    },
+
+    {
+      "id": "tradition-authorship",
+      "epic": "both",
+      "track": "tradition",
+      "stance": "tradition",
+      "title": "Traditional authorship: Vālmīki & Vyāsa",
+      "summary": "Tradition holds the Rāmāyaṇa was composed by the sage Vālmīki (the ādi-kavi, 'first poet') and the Mahābhārata by Vyāsa, who is also a character within it. This is the tradition's account, distinct from the philological picture of layered, multi-author growth.",
+      "date": { "kind": "traditional", "startYear": null, "endYear": null, "display": "single sage-authors (traditional)", "confidence": "traditional-belief", "note": "Held within the tradition; not the scholarly view of composite authorship." },
+      "storyOrder": null,
+      "sources": [ { "cite": "Rāmāyaṇa & Mahābhārata frame narratives (the texts' own accounts of their authorship).", "kind": "edition", "url": null } ],
+      "proof": null,
+      "links": [ { "to": "mbh-oral-tradition", "rel": "contrasts-with" }, { "to": "ram-valmiki-composition", "rel": "contrasts-with" } ],
+      "tags": ["authorship", "belief"]
+    },
+    {
+      "id": "tradition-yuga-dating",
+      "epic": "both",
+      "track": "tradition",
+      "stance": "tradition",
+      "title": "Yuga chronology (Tretā / Dvāpara)",
+      "summary": "Traditionally, the Rāmāyaṇa is placed in the Tretā Yuga and the Mahābhārata war at the junction of Dvāpara and Kali Yugas — commonly given as 3102 BCE for the start of Kali Yuga. These are traditional/astronomical reckonings, not academic datings.",
+      "date": { "kind": "traditional", "startYear": -3102, "endYear": null, "display": "Kali Yuga onset 3102 BCE (traditional)", "confidence": "traditional-belief", "note": "The 3102 BCE figure derives from Purāṇic/siddhāntic reckoning (e.g. Āryabhaṭa's era). Presented as tradition." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Āryabhaṭīya (499 CE) and Purāṇic Yuga reckonings; discussed in Pingree, D., Jyotiḥśāstra (1981).", "kind": "book", "url": null }
+      ],
+      "proof": null,
+      "links": [ { "to": "mbh-oral-tradition", "rel": "contrasts-with" } ],
+      "tags": ["Yuga", "chronology", "belief"]
+    },
+    {
+      "id": "tradition-archaeoastronomy",
+      "epic": "mahabharata",
+      "track": "tradition",
+      "stance": "tradition",
+      "title": "Archaeoastronomy dating claims",
+      "summary": "Some authors retro-calculate planetary/eclipse references in the Mahābhārata to propose specific war dates (figures such as 3067 BCE and 5561 BCE circulate). These are contested and not accepted as mainstream academic dating; the described sky configurations are not uniquely datable.",
+      "date": { "kind": "traditional", "startYear": -3067, "endYear": null, "display": "e.g. 3067 BCE (claimed, contested)", "confidence": "contested", "note": "Retro-calculation from textual sky references; method and premises are disputed by mainstream scholarship." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Popular archaeoastronomy proposals (e.g. B. N. Achar); critiqued in mainstream reviews — presented here as a claim, not consensus.", "kind": "paper", "url": null }
+      ],
+      "proof": null,
+      "links": [ { "to": "mbh-oral-tradition", "rel": "contrasts-with" } ],
+      "tags": ["astronomy", "contested", "belief"]
+    },
+
+    {
+      "id": "proof-spitzer-manuscript",
+      "epic": "mahabharata",
+      "track": "proof",
+      "stance": "scholarship",
+      "title": "Spitzer Manuscript reference",
+      "summary": "The Spitzer Manuscript (a Sanskrit fragment from the Kizil caves, ~2nd–4th c. CE) contains what is often cited as one of the earliest surviving lists of the Mahābhārata's parvans (books).",
+      "date": { "kind": "range", "startYear": 100, "endYear": 350, "display": "c. 2nd–4th century CE", "confidence": "scholarly-estimate", "note": "Palm-leaf/birch fragment found near Kizil (Xinjiang)." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Schlingloff, Dieter (1969), 'The Oldest Extant Parvan-List of the Mahābhārata', JAOS 89.", "kind": "paper", "url": null }
+      ],
+      "proof": {
+        "what": "An early manuscript fragment listing the epic's book-divisions.",
+        "establishes": "That a recognisable Mahābhārata parvan structure existed by roughly the early centuries CE.",
+        "doesNotEstablish": "The date of original composition, nor the events' historicity."
+      },
+      "links": [ { "to": "mbh-oral-tradition", "rel": "evidence-for" } ],
+      "tags": ["manuscript", "epigraphy"]
+    },
+    {
+      "id": "proof-earliest-ramayana-inscriptions",
+      "epic": "ramayana",
+      "track": "proof",
+      "stance": "scholarship",
+      "title": "Early references & the epic's spread",
+      "summary": "The Rāmāyaṇa story is attested early across Asia — e.g. reliefs and inscriptions in Southeast Asia and the Khmer world — showing wide diffusion well within the first millennium CE.",
+      "date": { "kind": "range", "startYear": 600, "endYear": 1200, "display": "c. 7th–12th century CE (SE-Asian attestation)", "confidence": "documented", "note": "e.g. Rāmāyaṇa reliefs at Prambanan (Java, 9th c.) and Angkor (Cambodia)." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Prambanan Rāmāyaṇa reliefs (Java, 9th c. CE); Angkor Wat reliefs (12th c. CE).", "kind": "site", "url": null }
+      ],
+      "proof": {
+        "what": "Dated monumental reliefs depicting Rāmāyaṇa episodes outside India.",
+        "establishes": "That the narrative was widely known and depicted across Asia by the mid-first millennium CE.",
+        "doesNotEstablish": "A composition date for Vālmīki's text, nor historicity of events."
+      },
+      "links": [ { "to": "ram-valmiki-composition", "rel": "evidence-for" } ],
+      "tags": ["archaeology", "reliefs", "diffusion"]
+    }
+  ]
+}
