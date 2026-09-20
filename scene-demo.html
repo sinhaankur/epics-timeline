@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" class="theme-gupta theme-light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Story scene — prototype (The Exile)</title>
+  <link rel="stylesheet" href="design/bharat-styles.css" />
+  <link rel="stylesheet" href="design/theme-gupta.css" />
+  <style>
+    body { margin: 0; background: #1a0f14; display: grid; place-items: center; min-height: 100vh; font-family: var(--font-sans); }
+    .stage { width: min(920px, 94vw); }
+    .scene-frame {
+      position: relative; aspect-ratio: 16/9; border-radius: 10px; overflow: hidden;
+      border: 1px solid color-mix(in oklab, #cba233 45%, transparent);
+      box-shadow: 0 30px 80px -30px rgba(0,0,0,.7);
+    }
+    .scene-frame canvas { width: 100%; height: 100%; display: block; }
+    .scene-cap {
+      position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 20px 16px;
+      background: linear-gradient(to top, rgba(10,4,10,.8), transparent);
+      color: #f4ead2; font-family: var(--font-display); font-size: 22px; font-weight: 600;
+    }
+    .scene-cap em { font-family: var(--font-italic); font-style: italic; display: block; font-size: 13px; font-weight: 400; color: #d8c4a4; margin-top: 4px; }
+    .note { color: #b89a78; font-family: var(--font-mono); font-size: 12px; margin-top: 14px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="scene-frame">
+      <canvas id="scene"></canvas>
+      <div class="scene-cap">Exile to the forest — fourteen years
+        <em>Rāma, Sītā and Lakṣmaṇa leave Ayodhyā at dusk. Original animation; the art is our own.</em>
+      </div>
+    </div>
+    <p class="note">prototype · pure canvas, parallax silhouettes, drifting mist, a sinking sun · degrades to a still with reduced-motion</p>
+  </div>
+  <script type="module">
+    import { mountScene, sceneExile } from "./src/story-scene.js";
+    mountScene(document.getElementById("scene"), sceneExile);
+  </script>
+</body>
+</html>
