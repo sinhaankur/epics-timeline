@@ -257,6 +257,53 @@
       "tags": ["bhakti", "Awadhi", "retelling"]
     },
     {
+      "id": "vimana-comparative",
+      "epic": "both",
+      "track": "reception",
+      "stance": "scholarship",
+      "title": "Flying vehicles — the Vimāna, and its cousins elsewhere",
+      "summary": "The Rāmāyaṇa's Puṣpaka Vimāna is a flying celestial chariot; the Mahābhārata has aerial craft too (Śālva's Saubha; Mātali flying Arjuna to Indra's heaven). Flying conveyances are a WIDE ancient literary motif — Greek sun/dragon chariots and Plato's winged chariot, Ezekiel's wheels and Elijah's chariot of fire, Etana borne aloft by an eagle in Mesopotamia. These are mythic/divine vehicles in stories, not evidence of ancient machines.",
+      "date": { "kind": "range", "startYear": -700, "endYear": 500, "display": "a shared ancient motif, c. 700 BCE – 500 CE", "confidence": "scholarly-estimate", "note": "Comparative literary motif across cultures; dates are of the texts, not of any real craft." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Vālmīki Rāmāyaṇa (Puṣpaka Vimāna); Mahābhārata (Saubha; Mātali). For comparanda: Plato, Phaedrus; Book of Ezekiel; the Etana epic.", "kind": "book", "url": null },
+        { "cite": "Wikipedia, 'Vimana' — overview of the motif and its sources (orientation).", "kind": "reference", "url": "https://en.wikipedia.org/wiki/Vimana" }
+      ],
+      "proof": {
+        "what": "Flying-vehicle passages in the epics + parallel flying-conveyance motifs in Greek, Hebrew and Mesopotamian literature.",
+        "establishes": "That an aerial celestial vehicle is a genuine, canonical element of the epics — and a widely-shared ancient literary/mythic motif.",
+        "doesNotEstablish": "That any real ancient aircraft existed. The modern 'Vaimānika Śāstra' (dictated c. 1918–1923, published 1952/1973 — NOT ancient; no manuscript predates 1918) claims the vimānas were engineered planes; a 1974 Indian Institute of Science study (Mukunda et al.) found its designs unflyable. And the 'Inca / Nazca flying machine' idea is a modern fringe claim — the Inca (c. 1400–1533 CE) are late, had no writing, and describe no such craft.",
+        "method": "Comparative literature / philology.",
+        "methodKind": "philology"
+      },
+      "links": [ { "to": "ram-story-abduction", "rel": "depicts" }, { "to": "ram-story-war", "rel": "appears-in" }, { "to": "vimana-design-vs", "rel": "compared-with" } ],
+      "tags": ["vimana", "comparative", "motif", "caveated"]
+    },
+    {
+      "id": "vimana-design-vs",
+      "epic": "both",
+      "track": "proof",
+      "stance": "scholarship",
+      "title": "Vimāna — the claimed design, engine & fuel (and the verdict)",
+      "summary": "The EPICS give no engineering — vimānas are simply 'self-moving, mind-swift, sun-bright'. The specific design/engine/fuel 'specs' come ONLY from the Vaimānika Śāstra, a text dictated c. 1918–1923 (published 1952/1973), not an ancient source. It names four craft — Śakuna (bird-shaped), Rukma (gold, conical/pyramidal), Sundara (silver, rocket-like), Tripura (three-storeyed, air/water/space) — built of light heat-resistant alloys, driven by a 'mercury-vortex engine' (mercury + gyroscopic motion) with solar tubes, fuelled by quicksilver/'rasa'. A 1974 Indian Institute of Science study found the designs unflyable.",
+      "date": { "kind": "range", "startYear": 1918, "endYear": 1974, "display": "text dictated c. 1918–1923; assessed 1974", "confidence": "documented", "note": "The design details are 20th-century, NOT from the ancient epics. Presented as what the claim says, with the scholarly verdict." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Josyer, G. R. (ed./trans.), Vaimānika Śāstra (attributed to Subbaraya Śāstry, dictated 1918–1923; Sanskrit+English 1973).", "kind": "book", "url": null },
+        { "cite": "Mukunda, H. S., Deshpande, S. M., Nagendra, H. R., Prabhu, A. & Govindaraju, S. P. (1974), 'A Critical Study of the Work \"Vymanika Shastra\"', Scientific Opinion, Indian Institute of Science, Bangalore.", "kind": "paper", "url": null },
+        { "cite": "Wikipedia, 'Vaimānika Shāstra' — dating + IISc study (orientation).", "kind": "reference", "url": "https://en.wikipedia.org/wiki/Vaim%C4%81nika_Sh%C4%81stra" }
+      ],
+      "proof": {
+        "what": "The only source that gives vimāna 'engineering': the Vaimānika Śāstra's four craft (Śakuna/Rukma/Sundara/Tripura), light heat-resistant alloys, a mercury-vortex engine + solar tubes, quicksilver/rasa fuel.",
+        "establishes": "What the 20th-century claim actually specifies — and that a 1974 IISc engineering study reviewed it in detail.",
+        "doesNotEstablish": "That any of it flies or is ancient. The IISc study found no manuscript predates 1918, dated the text to ≥1904, and judged the craft 'poor concoctions' — aeronautically unfeasible, the propulsion resisting rather than assisting flight (only the Rukma duct-fan idea made partial sense). The epics themselves give NO such specs.",
+        "method": "Textual dating + aeronautical/mechanical engineering review (IISc, 1974).",
+        "methodKind": "philology"
+      },
+      "links": [ { "to": "vimana-comparative", "rel": "detail-of" } ],
+      "tags": ["vimana", "Vaimanika Shastra", "engine", "fuel", "contested", "caveated"]
+    },
+    {
       "id": "puranas-reception",
       "epic": "both",
       "track": "reception",
