@@ -548,3 +548,25 @@ body > * { position: relative; z-index: 1; }
   .geo-label { font-size: 14px; }        /* larger for small screens */
   .geo-origin-label { font-size: 15px; }
 }
+
+/* ============================================================================
+   FAMILY TREE — one source, many retellings (pure SVG dendrogram). */
+.tree-view { margin: var(--sp-4) 0 var(--sp-8); }
+.tree-head h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-lg); margin: 0 0 var(--sp-1); }
+.tree-head p { color: var(--muted-foreground); font-size: var(--fs-sm); max-width: 70ch; margin: 0 0 var(--sp-4); line-height: 1.55; }
+.tree-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius-lg); border: 1px solid var(--border-strong); background: var(--card); }
+.tree-svg { width: 100%; min-width: 720px; height: auto; display: block; }
+
+.tree-link { fill: none; stroke: color-mix(in oklab, var(--halo-gold,#cba233) 55%, transparent); stroke-width: 1.4; vector-effect: non-scaling-stroke;
+  stroke-dasharray: 300; stroke-dashoffset: 300; animation: treeGrow 1s ease forwards; }
+@keyframes treeGrow { to { stroke-dashoffset: 0; } }
+
+.tree-node { cursor: pointer; }
+.tree-card { fill: var(--surface); stroke: var(--border-strong); stroke-width: 1; transition: stroke .15s, fill .15s; }
+.tree-node:hover .tree-card { stroke: var(--accent); fill: color-mix(in oklab, var(--accent) 8%, var(--surface)); }
+.tree-node.is-root .tree-card { fill: color-mix(in oklab, var(--accent) 16%, var(--surface)); stroke: var(--accent); stroke-width: 1.6; }
+.tree-title { font-family: var(--font-display); font-weight: 600; font-size: 13px; fill: var(--foreground); }
+.tree-meta { font-family: var(--font-mono); font-size: 9.5px; fill: var(--muted-foreground); }
+.tree-fid { font-family: var(--font-mono); font-size: 10px; fill: var(--accent-ink); text-anchor: end; font-weight: 600; }
+
+@media (max-width: 680px) { .tree-svg { min-width: 640px; } }

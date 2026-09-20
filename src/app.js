@@ -7,6 +7,7 @@
 
 import { renderAgesMap } from "./ages-map.js";
 import { renderGeoMap } from "./geo-map.js";
+import { renderTree } from "./tree-view.js";
 import { lotus, chakra, divider, illuminate } from "./ornament.js";
 import { SCENES, mountScene } from "./story-scene.js";
 
@@ -75,6 +76,7 @@ function render() {
 
   if (state.view === "map") { renderAgesMap(root, shown, state.ages, openSheet); return; }
   if (state.view === "geo") { renderGeoMap(root, shown, openSheet); return; }
+  if (state.view === "tree") { renderTree(root, state.nodes, openSheet); return; }
 
   const tracksToShow = state.track === "all" ? TRACKS : TRACKS.filter((t) => t.key === state.track);
   let html = "";
