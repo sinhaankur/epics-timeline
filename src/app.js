@@ -47,6 +47,31 @@ async function load() {
   wireFilters();
   wireViewToggle();
   render();
+  firstGlance();
+}
+
+// FRAMEWORK — Peak (first-glance): on the very first visit, a brief, dismissable
+// nudge orients the user (what this is + the one thing to do). Shown once.
+function firstGlance() {
+  let seen = false;
+  try { seen = localStorage.getItem("epics-seen") === "1"; } catch (e) { /* */ }
+  if (seen) return;
+  const tip = document.createElement("div");
+  tip.className = "first-glance";
+  tip.innerHTML = `
+    <strong>Two epics, mapped in real time.</strong>
+    Each mark is a dated, cited entry — tap any one to see its sources and proof.
+    Switch how you look with the buttons above; <em>proofs stand out in gold</em>.
+    <button class="fg-dismiss">Got it</button>`;
+  document.body.appendChild(tip);
+  const dismiss = () => {
+    tip.classList.add("gone");
+    try { localStorage.setItem("epics-seen", "1"); } catch (e) { /* */ }
+    setTimeout(() => tip.remove(), 400);
+  };
+  tip.querySelector(".fg-dismiss").addEventListener("click", dismiss);
+  setTimeout(() => tip.classList.add("show"), 400);
+  setTimeout(dismiss, 12000);   // auto-dismiss so it never nags
 }
 
 function passes(n) {

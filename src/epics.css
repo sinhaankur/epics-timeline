@@ -778,3 +778,32 @@ body > * { position: relative; z-index: 1; }
 .track-block[data-track="proof"] .node { border-left: 3px solid color-mix(in oklab, var(--accent) 45%, transparent); }
 /* map: proof markers slightly larger + brighter so evidence pops */
 .map-lane[data-lane="proof"] .map-marker::before { box-shadow: 0 0 0 3px var(--background), 0 0 8px color-mix(in oklab, var(--accent) 55%, transparent); }
+
+/* ============================================================================
+   Peak (first-glance) nudge + Fitts's Law target sizing. */
+.first-glance {
+  position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px);
+  z-index: 60; max-width: min(440px, 92vw); background: var(--card);
+  border: 1px solid var(--accent); border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);
+  padding: var(--sp-4) var(--sp-5); font-size: var(--fs-sm); color: var(--foreground); line-height: 1.5;
+  opacity: 0; transition: opacity .35s var(--ease-out, ease), transform .35s var(--ease-out, ease);
+}
+.first-glance.show { opacity: 1; transform: translate(-50%, 0); }
+.first-glance.gone { opacity: 0; transform: translate(-50%, 20px); }
+.first-glance strong { display: block; font-family: var(--font-display); font-size: var(--fs-md); margin-bottom: 4px; color: var(--foreground); }
+.first-glance em { color: var(--accent-ink); font-style: italic; }
+.first-glance .fg-dismiss {
+  display: block; margin-top: var(--sp-3); margin-left: auto;
+  font-family: var(--font-mono); font-size: var(--fs-2xs); padding: 8px 18px;
+  background: var(--accent); color: #fff; border: none; border-radius: var(--radius-full); cursor: pointer;
+}
+.first-glance .fg-dismiss:hover { background: var(--accent-ink); }
+
+/* Fitts's Law — the primary control (view switch) gets comfortable targets;
+   markers/pins are already ≥13px, bump the segmented buttons + filter summary. */
+.seg { min-height: 38px; padding: 8px 16px; }
+.filter-details summary { min-height: 34px; display: inline-flex; align-items: center; }
+@media (max-width: 760px) {
+  .seg { min-height: 42px; }            /* larger on touch */
+  .first-glance { bottom: 14px; padding: var(--sp-3) var(--sp-4); font-size: var(--fs-xs); }
+}
