@@ -139,6 +139,16 @@ function openSheet(id) {
         ? `<a href="#" data-goto="${esc(l.to)}"><span class="rel">${esc(l.rel)} →</span> ${esc(t.title)}</a>` : ""; }).join("")}
     </section>` : "";
 
+  const fidelity = n.fidelity ? `
+    <section>
+      <h4>Closeness to Vālmīki${n.region ? ` · ${esc(n.region)}` : ""}</h4>
+      <div class="fidbar" title="${esc(n.fidelity.note)}">
+        <div class="fidbar-fill" style="width:${Math.max(0, Math.min(100, n.fidelity.value))}%"></div>
+        <span class="fidbar-num">${n.fidelity.value}%</span>
+      </div>
+      <p class="note">${esc(n.fidelity.note)}</p>
+    </section>` : "";
+
   const dateNote = (n.date && n.date.note) ? `<p class="note">${esc(n.date.note)}</p>` : "";
   const stanceLabel = n.stance === "tradition"
     ? `<span class="chip chip-tradition">tradition</span>`
@@ -159,6 +169,7 @@ function openSheet(id) {
     ${dateNote}
     ${art}
     <p class="sheet-summary">${esc(n.summary)}</p>
+    ${fidelity}
     <section>
       <h4>Sources</h4>
       ${sources}

@@ -111,13 +111,23 @@ export function renderAgesMap(root, nodes, ages, onOpen) {
 
   root.innerHTML = `
     <div class="ages-map">
-      <div class="fresco-sky"></div>
-      <div class="age-strip">${bands}</div>
-      <div class="axis">${ticks}</div>
-      <div class="map-body">
-        <div class="meridian" style="left:${meridianX}%"><span>BCE · CE</span></div>
-        ${threadsSvg}
-        <div class="map-lanes">${lanesHtml}</div>
+      <div class="map-zoom-controls">
+        <button class="mz-btn" data-z="out" aria-label="Zoom out">−</button>
+        <button class="mz-btn" data-z="in" aria-label="Zoom in">+</button>
+        <button class="mz-btn mz-reset" data-z="reset">Reset</button>
+        <span class="mz-hint">scroll to zoom · drag to pan</span>
+      </div>
+      <div class="map-viewport">
+        <div class="map-zoom">
+          <div class="fresco-sky"></div>
+          <div class="age-strip">${bands}</div>
+          <div class="axis">${ticks}</div>
+          <div class="map-body">
+            <div class="meridian" style="left:${meridianX}%"><span>BCE · CE</span></div>
+            ${threadsSvg}
+            <div class="map-lanes">${lanesHtml}</div>
+          </div>
+        </div>
       </div>
       <p class="map-legend">
         <span class="lg mk-diamond"></span> proof / evidence
@@ -129,12 +139,66 @@ export function renderAgesMap(root, nodes, ages, onOpen) {
       </p>
     </div>`;
 
+  // open a marker (guard: a click that ends a drag shouldn't open it)
   root.querySelectorAll(".map-marker").forEach((el) =>
-    el.addEventListener("click", () => onOpen(el.dataset.id)));
+    el.addEventListener("click", (e) => { if (dragMoved) { e.preventDefault(); return; } onOpen(el.dataset.id); }));
   // age hover — dim the others, lift the note
   const map = root.querySelector(".ages-map");
   root.querySelectorAll(".age-band").forEach((band) => {
     band.addEventListener("mouseenter", () => map.classList.add("age-focus"));
     band.addEventListener("mouseleave", () => map.classList.remove("age-focus"));
   });
+
+  // ---- ZOOM & PAN -----------------------------------------------------------
+  // Horizontal zoom into the time axis so crowded periods (e.g. the medieval
+  // reception cluster) spread out and every marker is clickable. `zoom` scales
+  // the content horizontally about the cursor; `panX` slides it. Wheel = zoom at
+  // cursor, drag = pan, +/−/Reset buttons, pinch on touch.
+  const vp = root.querySelector(".map-viewport");
+  const zoomEl = root.querySelector(".map-zoom");
+  let zoom = 1, panX = 0, dragMoved = false;
+  const MIN = 1, MAX = 12;
+  const apply = () => {
+    // clamp pan so you can't drag the content entirely off-screen
+    const vpW = vp.clientWidth;
+    const contentW = vpW * zoom;
+    const minPan = Math.min(0, vpW - contentW);
+    panX = Math.max(minPan, Math.min(0, panX));
+    zoomEl.style.transform = `translateX(${panX}px) scaleX(${zoom})`;
+    // counter-scale marker labels/dots so they don't stretch horizontally
+    zoomEl.style.setProperty("--inv", 1 / zoom);
+  };
+  const zoomAt = (clientX, factor) => {
+    const rect = vp.getBoundingClientRect();
+    const cx = clientX - rect.left;               // cursor x in viewport
+    const before = (cx - panX) / zoom;            // content-space point under cursor
+    zoom = Math.max(MIN, Math.min(MAX, zoom * factor));
+    panX = cx - before * zoom;                    // keep that point under the cursor
+    apply();
+  };
+  vp.addEventListener("wheel", (e) => {
+    if (Math.abs(e.deltaY) < 0.01) return;
+    e.preventDefault();
+    zoomAt(e.clientX, Math.exp(-e.deltaY * 0.0015));
+  }, { passive: false });
+  // drag to pan
+  let dragging = false, startX = 0, startPan = 0;
+  vp.addEventListener("pointerdown", (e) => { dragging = true; dragMoved = false; startX = e.clientX; startPan = panX; vp.setPointerCapture(e.pointerId); });
+  vp.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 3) dragMoved = true;
+    panX = startPan + dx; apply();
+  });
+  vp.addEventListener("pointerup", () => { dragging = false; });
+  vp.addEventListener("pointercancel", () => { dragging = false; });
+  // buttons
+  root.querySelectorAll(".mz-btn").forEach((b) => b.addEventListener("click", () => {
+    const rect = vp.getBoundingClientRect();
+    if (b.dataset.z === "in") zoomAt(rect.left + rect.width / 2, 1.6);
+    else if (b.dataset.z === "out") zoomAt(rect.left + rect.width / 2, 1 / 1.6);
+    else { zoom = 1; panX = 0; apply(); }
+  }));
+  vp.classList.add("has-zoom");
+  apply();
 }
