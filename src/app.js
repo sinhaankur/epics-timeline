@@ -17,8 +17,7 @@ import { SCENES, mountScene } from "./story-scene.js";
 function mountOrnament() {
   const crown = document.getElementById("hero-crown");
   if (crown) crown.innerHTML =
-    `${chakra(28)}<img class="crown-medallion" src="public/img/art/lotus-medallion.png" alt="Carved lotus-chakra medallion (baked relief)" width="110" height="110" />${chakra(28)}`;
-  illuminate(document.querySelector(".hero.illum"));
+    `<img class="crown-medallion" src="public/img/art/lotus-medallion.png" alt="Carved lotus-chakra medallion (baked relief)" width="44" height="44" />`;
 }
 
 const TRACKS = [
@@ -235,10 +234,10 @@ function wireFilters() {
 
 /* ---------- view toggle (Ages map ⇄ track list) ---------- */
 function wireViewToggle() {
-  document.querySelectorAll(".view-card").forEach((btn) => {
+  document.querySelectorAll(".seg").forEach((btn) => {
     btn.addEventListener("click", () => {
       state.view = btn.dataset.view;
-      document.querySelectorAll(".view-card").forEach((b) => b.classList.toggle("is-on", b === btn));
+      document.querySelectorAll(".seg").forEach((b) => b.classList.toggle("is-on", b === btn));
       render();
     });
   });

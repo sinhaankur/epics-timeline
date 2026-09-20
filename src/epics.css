@@ -681,3 +681,59 @@ body > * { position: relative; z-index: 1; }
   .filterbar { padding: 0 16px; }
   .stance-key { font-size: 9px; }
 }
+
+/* ============================================================================
+   FRAMEWORK-ALIGNED SHELL (sinhaankur.com Universal Experience Framework):
+   · Signal over surface area — the TIMELINE is the hero, chrome recedes
+   · One primary action per screen — the view is one quiet segmented control
+   · Progressive disclosure — filter hidden until asked for
+   · Hick's / Prägnanz — few, chunked choices; simplest read
+   Overrides the earlier hero/view-picker/filterbar. */
+
+/* -- slim MASTHEAD (identity only, small) ---------------------------------- */
+.masthead {
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 40%, var(--background));
+}
+.mast-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 10px var(--pad-x, 24px);
+  display: flex; align-items: center; gap: var(--sp-3);
+}
+.mast-crown { line-height: 0; flex: 0 0 auto; }
+.crown-medallion { width: 40px; height: 40px; filter: drop-shadow(0 2px 5px rgba(90,63,31,.35)); }
+.mast-titles { display: flex; flex-direction: column; min-width: 0; }
+.mast-title { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-md); color: var(--foreground); line-height: 1.15; }
+.mast-title em { font-family: var(--font-italic); font-style: italic; }
+.mast-sub { font-family: var(--font-sans); font-size: var(--fs-xs); color: var(--muted-foreground); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* -- ONE toolbar: segmented view switch + progressive filter ---------------- */
+.toolbar {
+  position: sticky; top: 0; z-index: 30;
+  max-width: var(--maxw); margin: 0 auto; padding: var(--sp-3) var(--pad-x, 24px);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); flex-wrap: wrap;
+  background: color-mix(in oklab, var(--background) 92%, transparent); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+/* the primary control — a quiet segmented switch (not four big cards) */
+.viewseg { display: inline-flex; background: var(--muted); border: 1px solid var(--border); border-radius: var(--radius-full); padding: 3px; gap: 2px; }
+.seg {
+  font-family: var(--font-sans); font-size: var(--fs-sm); font-weight: 500;
+  padding: 6px 14px; border: none; background: transparent; color: var(--muted-foreground);
+  border-radius: var(--radius-full); cursor: pointer; transition: all 0.15s var(--ease-out, ease); white-space: nowrap;
+}
+.seg:hover { color: var(--foreground); }
+.seg.is-on { background: var(--card); color: var(--accent-ink); box-shadow: var(--shadow-xs); font-weight: 600; }
+.toolbar-right { display: flex; align-items: center; gap: var(--sp-3); }
+
+/* -- CONTENT is the hero: give the view a framed, prominent stage ----------- */
+#timeline { max-width: var(--maxw); margin: 0 auto; padding: var(--sp-5) var(--pad-x, 24px) var(--sp-10); }
+
+/* -- responsive ------------------------------------------------------------- */
+@media (max-width: 760px) {
+  .mast-sub { display: none; }                 /* identity stays tiny */
+  .toolbar { padding: var(--sp-2) 16px; gap: var(--sp-2); }
+  .viewseg { width: 100%; justify-content: space-between; overflow-x: auto; }
+  .seg { flex: 1 1 auto; font-size: var(--fs-xs); padding: 7px 8px; text-align: center; }
+  .toolbar-right { width: 100%; justify-content: space-between; }
+  #timeline { padding: var(--sp-3) 16px var(--sp-8); }
+}

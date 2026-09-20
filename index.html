@@ -17,48 +17,36 @@
   <link rel="stylesheet" href="src/epics.css" />
 </head>
 <body>
-  <header class="hero illum">
-    <div class="hero-inner">
-      <div class="hero-crown" id="hero-crown"><!-- Blender medallion + ornament, mounted by JS --></div>
-      <p class="hero-kicker">A cited, multi-track history · scholarship &amp; tradition, never blurred</p>
-      <h1 class="hero-title"><em>Rāmāyaṇa</em> &amp; <em>Mahābhārata</em><span class="hero-sub">the two great epics, over time</span></h1>
-      <p class="hero-lede">
-        How the text grew, the order of events within the story, who retold it down
-        the centuries, what tradition holds, and the proofs people point to —
-        with nothing presented as settled fact.
-      </p>
+  <!-- SLIM MASTHEAD — identity only; the SIGNAL (the timeline) is the hero, not
+       this. (Framework: Signal over surface area · Prägnanz.) -->
+  <header class="masthead">
+    <div class="mast-inner">
+      <span class="mast-crown" id="hero-crown"><!-- medallion, mounted by JS --></span>
+      <span class="mast-titles">
+        <span class="mast-title"><em>Rāmāyaṇa</em> &amp; <em>Mahābhārata</em></span>
+        <span class="mast-sub">the two great epics, over time — cited; scholarship &amp; tradition never blurred</span>
+      </span>
     </div>
   </header>
 
-  <!-- IA: choose a way in. Each view is a labelled doorway, not a cryptic pill. -->
-  <nav class="view-picker" aria-label="Choose a view">
-    <button class="view-card is-on" data-view="map">
-      <span class="vc-icon">◇</span>
-      <span class="vc-name">The Ages</span>
-      <span class="vc-desc">Everything on a deep-time axis, Bronze Age to today</span>
-    </button>
-    <button class="view-card" data-view="geo">
-      <span class="vc-icon">⊕</span>
-      <span class="vc-name">The Spread</span>
-      <span class="vc-desc">How the story travelled across Asia, on a map</span>
-    </button>
-    <button class="view-card" data-view="tree">
-      <span class="vc-icon">⌥</span>
-      <span class="vc-name">Family Tree</span>
-      <span class="vc-desc">One source, branching into many retellings</span>
-    </button>
-    <button class="view-card" data-view="list">
-      <span class="vc-icon">☰</span>
-      <span class="vc-name">By Track</span>
-      <span class="vc-desc">Text · story · reception · tradition · proofs</span>
-    </button>
-  </nav>
-
-  <!-- compact filter bar, inside the content frame (not a wall above it) -->
-  <div class="filterbar" aria-label="Filters">
-    <details class="filter-details">
-      <summary>Filter <span class="filter-count"></span></summary>
-      <div class="filter-body">
+  <!-- ONE content toolbar: the primary control (which view) as a quiet segmented
+       switch, the filter progressively disclosed, the stance-key inline.
+       (Framework: One primary action · Progressive disclosure · Hick's Law.) -->
+  <div class="toolbar" role="region" aria-label="Timeline controls">
+    <div class="viewseg" role="tablist" aria-label="View">
+      <button class="seg is-on" data-view="map" role="tab" title="Everything on a deep-time axis">The Ages</button>
+      <button class="seg" data-view="geo" role="tab" title="How the story spread across Asia">The Spread</button>
+      <button class="seg" data-view="tree" role="tab" title="One source, many retellings">Family tree</button>
+      <button class="seg" data-view="list" role="tab" title="By track: text · story · reception · tradition · proofs">By track</button>
+    </div>
+    <div class="toolbar-right">
+      <p class="stance-key">
+        <span class="chip chip-scholarship">scholarship</span>
+        <span class="chip chip-tradition">tradition</span>
+      </p>
+      <details class="filter-details">
+        <summary>Filter</summary>
+        <div class="filter-body">
         <div class="control-group" role="group" aria-label="Epic">
           <span class="control-label">Epic</span>
           <button class="filter is-on" data-filter="epic" data-value="all">Both</button>
@@ -81,11 +69,8 @@
           <button class="filter" data-filter="stance" data-value="tradition">Tradition</button>
         </div>
       </div>
-    </details>
-    <p class="stance-key">
-      <span class="chip chip-scholarship">scholarship</span> peer-reviewed
-      <span class="chip chip-tradition">tradition</span> as tradition
-    </p>
+      </details>
+    </div>
   </div>
 
   <main id="timeline" class="ed-page" aria-live="polite"><!-- rendered by app.js --></main>
