@@ -17,55 +17,76 @@
   <link rel="stylesheet" href="src/epics.css" />
 </head>
 <body>
-  <header class="ed-hero illum">
-    <div class="ed-page">
-      <div class="hero-crown" id="hero-crown"><!-- lotus + chakra ornament, mounted by JS --></div>
-      <p class="ed-kicker">A cited, multi-track history</p>
-      <h1 class="ed-h1"><em>Rāmāyaṇa</em> &amp; <em>Mahābhārata</em>, over time</h1>
-      <p class="ed-lede">
-        Two of the world's great epics, laid on a timeline that keeps five things
-        apart on purpose: how the <em>text</em> grew, the order of events <em>within</em>
-        the story, who <em>retold</em> it down the centuries, what the <em>tradition</em>
-        holds, and the <em>proofs</em> people actually point to. Scholarship and belief
-        are both here — never blurred. Nothing is presented as settled fact.
+  <header class="hero illum">
+    <div class="hero-inner">
+      <div class="hero-crown" id="hero-crown"><!-- Blender medallion + ornament, mounted by JS --></div>
+      <p class="hero-kicker">A cited, multi-track history · scholarship &amp; tradition, never blurred</p>
+      <h1 class="hero-title"><em>Rāmāyaṇa</em> &amp; <em>Mahābhārata</em><span class="hero-sub">the two great epics, over time</span></h1>
+      <p class="hero-lede">
+        How the text grew, the order of events within the story, who retold it down
+        the centuries, what tradition holds, and the proofs people point to —
+        with nothing presented as settled fact.
       </p>
-      <p class="honesty-legend">
-        <span class="chip chip-scholarship">scholarship</span> peer-reviewed philology &amp; archaeology, dates as ranges
-        &nbsp;·&nbsp;
-        <span class="chip chip-tradition">tradition</span> what the tradition holds, labelled as such
-      </p>
-      <div class="view-toggle" role="group" aria-label="View">
-        <button data-view="map" class="is-on">◇ The Ages — deep-time</button>
-        <button data-view="geo">⊕ Map — the spread</button>
-        <button data-view="tree">⌥ Family tree</button>
-        <button data-view="list">☰ Track list</button>
-      </div>
     </div>
   </header>
 
-  <nav class="controls ed-page" aria-label="Filters">
-    <div class="control-group" role="group" aria-label="Epic">
-      <span class="control-label">Epic</span>
-      <button class="filter is-on" data-filter="epic" data-value="all">Both</button>
-      <button class="filter" data-filter="epic" data-value="ramayana">Rāmāyaṇa</button>
-      <button class="filter" data-filter="epic" data-value="mahabharata">Mahābhārata</button>
-    </div>
-    <div class="control-group" role="group" aria-label="Track">
-      <span class="control-label">Track</span>
-      <button class="filter is-on" data-filter="track" data-value="all">All tracks</button>
-      <button class="filter" data-filter="track" data-value="text">Textual history</button>
-      <button class="filter" data-filter="track" data-value="story">In-story</button>
-      <button class="filter" data-filter="track" data-value="reception">Reception</button>
-      <button class="filter" data-filter="track" data-value="tradition">Traditional dating</button>
-      <button class="filter" data-filter="track" data-value="proof">Proofs</button>
-    </div>
-    <div class="control-group" role="group" aria-label="Stance">
-      <span class="control-label">Stance</span>
-      <button class="filter is-on" data-filter="stance" data-value="all">Both</button>
-      <button class="filter" data-filter="stance" data-value="scholarship">Scholarship</button>
-      <button class="filter" data-filter="stance" data-value="tradition">Tradition</button>
-    </div>
+  <!-- IA: choose a way in. Each view is a labelled doorway, not a cryptic pill. -->
+  <nav class="view-picker" aria-label="Choose a view">
+    <button class="view-card is-on" data-view="map">
+      <span class="vc-icon">◇</span>
+      <span class="vc-name">The Ages</span>
+      <span class="vc-desc">Everything on a deep-time axis, Bronze Age to today</span>
+    </button>
+    <button class="view-card" data-view="geo">
+      <span class="vc-icon">⊕</span>
+      <span class="vc-name">The Spread</span>
+      <span class="vc-desc">How the story travelled across Asia, on a map</span>
+    </button>
+    <button class="view-card" data-view="tree">
+      <span class="vc-icon">⌥</span>
+      <span class="vc-name">Family Tree</span>
+      <span class="vc-desc">One source, branching into many retellings</span>
+    </button>
+    <button class="view-card" data-view="list">
+      <span class="vc-icon">☰</span>
+      <span class="vc-name">By Track</span>
+      <span class="vc-desc">Text · story · reception · tradition · proofs</span>
+    </button>
   </nav>
+
+  <!-- compact filter bar, inside the content frame (not a wall above it) -->
+  <div class="filterbar" aria-label="Filters">
+    <details class="filter-details">
+      <summary>Filter <span class="filter-count"></span></summary>
+      <div class="filter-body">
+        <div class="control-group" role="group" aria-label="Epic">
+          <span class="control-label">Epic</span>
+          <button class="filter is-on" data-filter="epic" data-value="all">Both</button>
+          <button class="filter" data-filter="epic" data-value="ramayana">Rāmāyaṇa</button>
+          <button class="filter" data-filter="epic" data-value="mahabharata">Mahābhārata</button>
+        </div>
+        <div class="control-group" role="group" aria-label="Track">
+          <span class="control-label">Track</span>
+          <button class="filter is-on" data-filter="track" data-value="all">All</button>
+          <button class="filter" data-filter="track" data-value="text">Text</button>
+          <button class="filter" data-filter="track" data-value="story">Story</button>
+          <button class="filter" data-filter="track" data-value="reception">Reception</button>
+          <button class="filter" data-filter="track" data-value="tradition">Tradition</button>
+          <button class="filter" data-filter="track" data-value="proof">Proofs</button>
+        </div>
+        <div class="control-group" role="group" aria-label="Stance">
+          <span class="control-label">Stance</span>
+          <button class="filter is-on" data-filter="stance" data-value="all">Both</button>
+          <button class="filter" data-filter="stance" data-value="scholarship">Scholarship</button>
+          <button class="filter" data-filter="stance" data-value="tradition">Tradition</button>
+        </div>
+      </div>
+    </details>
+    <p class="stance-key">
+      <span class="chip chip-scholarship">scholarship</span> peer-reviewed
+      <span class="chip chip-tradition">tradition</span> as tradition
+    </p>
+  </div>
 
   <main id="timeline" class="ed-page" aria-live="polite"><!-- rendered by app.js --></main>
 

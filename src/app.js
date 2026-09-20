@@ -17,10 +17,8 @@ import { SCENES, mountScene } from "./story-scene.js";
 function mountOrnament() {
   const crown = document.getElementById("hero-crown");
   if (crown) crown.innerHTML =
-    `${chakra(30)}<img class="crown-medallion" src="public/img/art/lotus-medallion.png" alt="Carved lotus-chakra medallion (baked relief)" width="120" height="120" />${chakra(30)}`;
-  const legend = document.querySelector(".honesty-legend");
-  if (legend) legend.insertAdjacentHTML("afterend", divider());
-  illuminate(document.querySelector(".ed-hero.illum"));
+    `${chakra(28)}<img class="crown-medallion" src="public/img/art/lotus-medallion.png" alt="Carved lotus-chakra medallion (baked relief)" width="110" height="110" />${chakra(28)}`;
+  illuminate(document.querySelector(".hero.illum"));
 }
 
 const TRACKS = [
@@ -237,11 +235,10 @@ function wireFilters() {
 
 /* ---------- view toggle (Ages map ⇄ track list) ---------- */
 function wireViewToggle() {
-  document.querySelectorAll(".view-toggle button").forEach((btn) => {
+  document.querySelectorAll(".view-card").forEach((btn) => {
     btn.addEventListener("click", () => {
       state.view = btn.dataset.view;
-      document.querySelectorAll(".view-toggle button").forEach((b) => b.classList.toggle("is-on", b === btn));
-      // the track filter only applies to the list view; show a hint by leaving it
+      document.querySelectorAll(".view-card").forEach((b) => b.classList.toggle("is-on", b === btn));
       render();
     });
   });
