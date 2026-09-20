@@ -1,0 +1,62 @@
+/* theme-gupta.css — the Gupta register of the Indic design systems.
+   Author: Sinhaankur.  Heritage: Mathura red/pink sandstone + Ajanta fresco
+   jewel-tones (ASHOKA_DESIGN.md §2b). Where Mauryan is stone-and-sky (the
+   skeleton), Gupta is warm sandstone + fresco (the soul: long-form, heritage).
+
+   REVERSIBLE LAYER: link AFTER styles.css, add class="theme-gupta" to <html>.
+   Add theme-dark (or .register-dark) for the cave-shrine register.
+   Same token contract as theme-mauryan.css — only the values change. */
+html.theme-gupta {
+  /* `html.` prefix raises specificity to (0,1,1) to override html.theme-light */
+  /* Gupta / Ajanta palette (ASHOKA_DESIGN.md §2b) */
+  --gupta-stone: #c8664a; --gupta-rose: #d98a6a; --gupta-deep: #9e3b2e;
+  --ajanta-ochre: #c68a2e; --ajanta-red: #9e3b2e; --ajanta-green: #4f6b45;
+  --ajanta-lapis: #2a4a7a; --ajanta-ivory: #efe3cc; --halo-gold: #cba233;
+  --plaster: #f3e7cf;         /* lime-plaster ground — the fresco surface */
+  --plaster-2: #e7d6b6;
+
+  /* remap house surfaces onto warm plaster; ink is fresco-red-brown */
+  --background: var(--plaster); --card: #f8efdb; --surface: #f8efdb;
+  --muted: var(--plaster-2); --foreground: #3a2018;
+  --muted-foreground: #7a5847;
+  --border: rgba(158, 59, 46, 0.20); --border-strong: rgba(158, 59, 46, 0.4);
+  --surface-2: #efe0c4;
+
+  /* Gupta is devotional/warm: the action colour is the halo-gold, hover deeper */
+  --accent: #b07a1e; --accent-ink: #8a5d12; --accent-tint: #f0e2bf;
+  --indigo: var(--ajanta-lapis);
+  --success: var(--ajanta-green); --warning: var(--ajanta-ochre);
+  --danger: var(--ajanta-red); --info: var(--ajanta-lapis);
+
+  /* softer than Mauryan's incised 2px — Gupta ornament is rounded/foliate */
+  --ds-radius: 6px;
+}
+
+/* dark "cave-shrine" — Ajanta interior: lamp-lit rock, ivory ink, gold halo */
+html.theme-gupta.theme-dark, html.theme-gupta .register-dark {
+  --background: #241412; --card: #33201c; --surface: #33201c;
+  --foreground: var(--ajanta-ivory); --muted: #3e2622; --muted-foreground: #c8a890;
+  --border: rgba(203, 162, 51, 0.25); --border-strong: rgba(203, 162, 51, 0.45);
+  --surface-2: #2c1a17;
+  --accent: #d9a83a; --accent-ink: #efc766;
+}
+
+/* the Gupta finish — a warm foliate top-edge on cards (vs Mauryan's cool polish) */
+.theme-gupta .ed-card, .theme-gupta .card, .theme-gupta .ds-demo { position: relative; }
+.theme-gupta .ed-card::before, .theme-gupta .card::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+  background: linear-gradient(90deg, var(--halo-gold), var(--gupta-rose) 60%, transparent);
+  opacity: .8; pointer-events: none; }
+
+/* incised rules soften to a warm double-hairline */
+.theme-gupta .ds-rule, .theme-gupta hr {
+  border: 0; height: 3px; background:
+    linear-gradient(var(--gupta-deep), var(--gupta-deep)) center/100% 1px no-repeat,
+    linear-gradient(var(--gupta-deep), var(--gupta-deep)) center/100% 1px no-repeat;
+  background-position: center top, center bottom; opacity: .6; }
+
+/* long-form gets ruled, justified margins (the manuscript feel) */
+.theme-gupta .edict, .theme-gupta .ed-article blockquote {
+  border-left: 3px solid var(--gupta-deep); padding-left: var(--sp-5, 20px); }
+
+@media (prefers-reduced-motion: reduce) { .theme-gupta .chakra-spin { animation: none; } }

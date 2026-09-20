@@ -1,36 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="theme-gupta theme-light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rāmāyaṇa & Mahābhārata — a cited timeline</title>
+  <title>Rāmāyaṇa &amp; Mahābhārata — a cited timeline</title>
   <meta name="description" content="A multi-track, sourced timeline of the Rāmāyaṇa and Mahābhārata: textual history, in-story chronology, reception over time, traditional dating, and proofs — with scholarship and tradition kept distinct." />
+  <link rel="icon" href="public/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="icon" href="public/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="src/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Bharat design system (styles.css) + the Gupta register (theme-gupta.css).
+       Author: Sinhaankur. The same house system used across the Bharat atlas —
+       reused here so the epics timeline shares one design language. -->
+  <link rel="stylesheet" href="design/bharat-styles.css" />
+  <link rel="stylesheet" href="design/theme-gupta.css" />
+  <link rel="stylesheet" href="src/epics.css" />
 </head>
 <body>
-  <header class="masthead">
-    <div class="wrap">
-      <p class="eyebrow">A cited, multi-track history</p>
-      <h1><span class="epic">Rāmāyaṇa</span> &amp; <span class="epic">Mahābhārata</span><br />over time</h1>
-      <p class="lede">
+  <header class="ed-hero">
+    <div class="ed-page">
+      <p class="ed-kicker">A cited, multi-track history</p>
+      <h1 class="ed-h1"><em>Rāmāyaṇa</em> &amp; <em>Mahābhārata</em>, over time</h1>
+      <p class="ed-lede">
         Two of the world's great epics, laid on a timeline that keeps five things
         apart on purpose: how the <em>text</em> grew, the order of events <em>within</em>
         the story, who <em>retold</em> it down the centuries, what the <em>tradition</em>
         holds, and the <em>proofs</em> people actually point to. Scholarship and belief
         are both here — never blurred. Nothing is presented as settled fact.
       </p>
-      <p class="honesty">
-        <span class="chip chip-scholarship">scholarship</span> peer-reviewed philology &amp; archaeology, dates as ranges &nbsp;·&nbsp;
+      <p class="honesty-legend">
+        <span class="chip chip-scholarship">scholarship</span> peer-reviewed philology &amp; archaeology, dates as ranges
+        &nbsp;·&nbsp;
         <span class="chip chip-tradition">tradition</span> what the tradition holds, labelled as such
       </p>
     </div>
   </header>
 
-  <nav class="controls wrap" aria-label="Filters">
+  <nav class="controls ed-page" aria-label="Filters">
     <div class="control-group" role="group" aria-label="Epic">
       <span class="control-label">Epic</span>
       <button class="filter is-on" data-filter="epic" data-value="all">Both</button>
@@ -54,9 +60,9 @@
     </div>
   </nav>
 
-  <main id="timeline" class="wrap" aria-live="polite"><!-- rendered by app.js --></main>
+  <main id="timeline" class="ed-page" aria-live="polite"><!-- rendered by app.js --></main>
 
-  <footer class="foot wrap">
+  <footer class="foot ed-page">
     <p>
       Open data — every node carries a source; see
       <a href="data/SCHEMA.md">the schema</a> and
@@ -66,6 +72,8 @@
       A respectful, non-polemical project. Academic datings follow mainstream Sanskrit
       philology (Brockington; Goldman; Sukthankar/BORI). Traditional datings are given
       as tradition. Corrections and better citations are the most valuable contributions.
+      Design: the <a href="https://github.com/sinhaankur/bharat">Bharat design system</a>
+      (Gupta register) by Sinhaankur.
     </p>
   </footer>
 
