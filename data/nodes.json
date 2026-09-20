@@ -366,6 +366,52 @@
       "tags": ["archaeology", "Bronze Age", "contested", "place"]
     },
     {
+      "id": "proof-adna-narasimhan",
+      "epic": "both",
+      "track": "proof",
+      "stance": "scholarship",
+      "title": "Ancient DNA — the peopling of South Asia",
+      "summary": "The largest ancient-DNA study to date (Narasimhan et al. 2019, Science; 523 ancient genomes) reconstructs how South Asian populations formed: a gradient of Iranian-farmer-related, indigenous South-Asian (AASI), and — from ~4,000 years ago — Steppe pastoralist ancestry mixing over deep time. This is population history, on a far longer timescale than the epics as texts.",
+      "date": { "kind": "range", "startYear": -6000, "endYear": -1500, "display": "admixture over c. 6000–1500 BCE", "confidence": "scholarly-estimate", "note": "Genetic dating from ancient genomes; an evolving field with real uncertainty (ANI/ASI endpoints are inferred statistically)." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Narasimhan, V. M. et al. (2019), 'The formation of human populations in South and Central Asia', Science 365, eaat7487.", "kind": "paper", "url": "https://www.science.org/doi/10.1126/science.aat7487" },
+        { "cite": "Reich Lab open PDF of the above.", "kind": "paper", "url": "https://reich.hms.harvard.edu/sites/reich.hms.harvard.edu/files/inline-files/eaat7487.full_.pdf" }
+      ],
+      "proof": {
+        "what": "Genome-wide data from 523 ancient individuals across South and Central Asia.",
+        "establishes": "A deep-time model of population movements and admixture (Iranian-farmer-related + AASI + Steppe) that shaped South Asian ancestry.",
+        "doesNotEstablish": "Anything about the Rāmāyaṇa or Mahābhārata as events, nor any identity between 'a genetic population' and 'the epic's characters or peoples'. Genetics is not the epic — and this is evolving science, not a verdict.",
+        "method": "Ancient DNA — genome-wide sequencing + population-genetics modelling (qpAdm, admixture graphs).",
+        "methodKind": "ancient-dna"
+      },
+      "links": [ { "to": "proof-adna-rakhigarhi", "rel": "compare" } ],
+      "tags": ["ancient DNA", "population history", "genetics", "caveated"]
+    },
+    {
+      "id": "proof-adna-rakhigarhi",
+      "epic": "both",
+      "track": "proof",
+      "stance": "scholarship",
+      "title": "The Indus Valley (Rakhigarhi) genome",
+      "summary": "The first genome of an individual from the Indus Valley Civilisation (Rakhigarhi, Haryana), reported by Shinde, Narasimhan et al. 2019 (Cell), showed a mix of Iranian-farmer-related and indigenous South-Asian ancestry — and, notably, no Steppe pastoralist ancestry. A single ancient genome, a data point in a still-forming picture.",
+      "date": { "kind": "range", "startYear": -2800, "endYear": -2300, "display": "Indus individual c. 2800–2300 BCE", "confidence": "scholarly-estimate", "note": "One individual; conclusions are drawn cautiously from a single degraded ancient genome plus comparanda." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Shinde, V., Narasimhan, V. M. et al. (2019), 'An Ancient Harappan Genome Lacks Ancestry from Steppe Pastoralists or Iranian Farmers', Cell 179(3), 729–735.", "kind": "paper", "url": "https://doi.org/10.1016/j.cell.2019.08.048" }
+      ],
+      "proof": {
+        "what": "The first (and, at publication, only) sequenced genome from the Indus Valley Civilisation.",
+        "establishes": "That an IVC individual carried Iranian-farmer-related + indigenous South-Asian ancestry, without Steppe ancestry.",
+        "doesNotEstablish": "Any link to the epics or their characters; a single genome is a starting point, not a population, and certainly not a narrative.",
+        "method": "Ancient DNA from a single skeleton (Rakhigarhi) + comparison with the wider ancient-genome dataset.",
+        "methodKind": "ancient-dna"
+      },
+      "place": { "name": "Rakhigarhi, Haryana (Indus Valley Civilisation)", "lat": 29.28, "lon": 76.11 },
+      "links": [ { "to": "proof-adna-narasimhan", "rel": "part-of" } ],
+      "tags": ["ancient DNA", "Indus Valley", "Harappan", "genetics", "caveated", "place"]
+    },
+    {
       "id": "proof-spitzer-manuscript",
       "epic": "mahabharata",
       "track": "proof",

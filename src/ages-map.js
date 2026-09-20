@@ -22,6 +22,7 @@ const METHOD_LABEL = {
   epigraphy: "Epigraphy",
   philology: "Philology",
   archaeoastronomy: "Archaeoastronomy",
+  "ancient-dna": "Ancient DNA",
 };
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
