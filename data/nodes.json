@@ -502,6 +502,44 @@
     },
 
     {
+      "id": "proof-khoh-copperplate",
+      "epic": "mahabharata",
+      "track": "proof",
+      "stance": "scholarship",
+      "title": "Khoh copper-plate — the Mahābhārata as ‘100,000 verses’",
+      "summary": "The Khoh copper-plate grant of Mahārāja Śarvanātha (Gupta year 214 = 533–534 CE, Satna dist., Madhya Pradesh) records a land-gift to a temple of the goddess Piṣṭapurikā, and — to justify it — quotes the Mahābhārata BY NAME, calling it the ‘Śatasāhasrī Saṃhitā’ (the collection of one hundred thousand verses). A DATED inscription showing the epic already stood at ~100,000 verses, under Vyāsa's name, by the early-6th century CE. Several Khoh/Parivrājaka plates (475–534 CE) carry the same land-grant verse.",
+      "date": { "kind": "point", "startYear": 533, "endYear": 534, "display": "533–534 CE (Gupta year 214)", "confidence": "documented", "note": "One of a set of Khoh/Uchchakalpa–Parivrājaka copper-plate grants; the land-grant verse recurs on plates from 475 CE on." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Fleet, J. F. (1888), Corpus Inscriptionum Indicarum vol. III: Inscriptions of the Early Gupta Kings — Khoh plates of Śarvanātha.", "kind": "inscription", "url": null },
+        { "cite": "Khoh copper-plate of Mahārāja Śarvanātha, Gupta year 214 (533–534 CE), Satna dist., Madhya Pradesh.", "kind": "inscription", "url": "https://en.wikipedia.org/wiki/Mahabharata" }
+      ],
+      "proof": {
+        "what": "A dated 6th-century royal copper-plate land grant that quotes the Mahābhārata by name and calls it the ‘collection of 100,000 verses’.",
+        "establishes": "That by 533–534 CE the Mahābhārata was an established, named text of ~100,000 verses attributed to Vyāsa — a hard terminus ante quem in metal.",
+        "doesNotEstablish": "The date of original composition, nor that the narrated war happened. It dates the TEXT's established form, not the events.",
+        "method": "Epigraphy — a dated, physical inscription (copper-plate charter).",
+        "methodKind": "epigraphy"
+      },
+      "verse": {
+        "ref": "Land-grant verse quoted in the Khoh plate (‘from the Śatasāhasrī Saṃhitā, by Vyāsa’)",
+        "devanagari": "स्वदत्तां परदत्तां वा यो हरेत वसुन्धराम् ।\nषष्टिं वर्षसहस्राणि विष्ठायां जायते कृमिः ॥",
+        "iast": "sva-dattāṃ para-dattāṃ vā yo hareta vasundharām / ṣaṣṭiṃ varṣa-sahasrāṇi viṣṭhāyāṃ jāyate kṛmiḥ",
+        "translation": "Whoever takes away land given by himself or by another is born a worm in ordure for sixty thousand years. (The land-grant admonition the plate cites from the Mahābhārata to protect the gift.)",
+        "source": "Land-grant imprecation verse of the type quoted on the Khoh plate (Mahābhārata, Anuśāsana Parva tradition)."
+      },
+      "place": { "name": "Khoh, Satna district, Madhya Pradesh", "lat": 24.55, "lon": 80.83 },
+      "image": {
+        "src": "public/img/art/khoh-copperplate-534ce.jpg",
+        "alt": "The 534 CE Khoh copper-plate inscription of king Śarvanātha, in Sanskrit",
+        "credit": "534 CE Khoh copper-plate of king Śarvanātha. Photo © Ms Sarah Welch, CC BY-SA 4.0 (via Wikimedia Commons).",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:534_CE_Khoh_copper_plate_inscription,_Lakshmi_temple_Hinduism,_king_Sarvanatha,_Sanskrit.jpg",
+        "license": "CC BY-SA 4.0"
+      },
+      "links": [ { "to": "mbh-oral-tradition", "rel": "evidence-for" }, { "to": "mbh-critical-edition", "rel": "evidence-for" } ],
+      "tags": ["epigraphy", "copper-plate", "inscription", "place"]
+    },
+    {
       "id": "proof-hastinapura-pgw",
       "epic": "mahabharata",
       "track": "proof",
