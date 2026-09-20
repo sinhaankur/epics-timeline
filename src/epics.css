@@ -807,3 +807,29 @@ body > * { position: relative; z-index: 1; }
   .seg { min-height: 42px; }            /* larger on touch */
   .first-glance { bottom: 14px; padding: var(--sp-3) var(--sp-4); font-size: var(--fs-xs); }
 }
+
+/* ============================================================================
+   Aesthetic–usability polish: a calm loading SKELETON + a richer content stage. */
+.skeleton { padding: var(--sp-4) 0; }
+.sk-strip { height: 46px; border-radius: var(--radius); margin-bottom: var(--sp-4);
+  background: linear-gradient(90deg, var(--muted) 0%, color-mix(in oklab, var(--card) 70%, var(--muted)) 50%, var(--muted) 100%);
+  background-size: 200% 100%; animation: shimmer 1.4s ease-in-out infinite; }
+.sk-lane { display: grid; grid-template-columns: 120px 1fr; gap: var(--sp-3); align-items: center; margin-bottom: var(--sp-4); }
+.sk-label { height: 10px; border-radius: 999px; background: var(--muted); }
+.sk-track { height: 20px; border-radius: 999px;
+  background: linear-gradient(90deg, var(--muted) 0%, color-mix(in oklab, var(--card) 70%, var(--muted)) 50%, var(--muted) 100%);
+  background-size: 200% 100%; animation: shimmer 1.4s ease-in-out infinite; }
+.sk-lane:nth-child(3) .sk-track { animation-delay: .1s; }
+.sk-lane:nth-child(4) .sk-track { animation-delay: .2s; }
+.sk-lane:nth-child(5) .sk-track { animation-delay: .3s; }
+.sk-note { text-align: center; font-family: var(--font-mono); font-size: var(--fs-3xs); color: var(--muted-foreground); margin-top: var(--sp-4); }
+@keyframes shimmer { 0%,100% { background-position: 200% 0; } 50% { background-position: 0 0; } }
+@media (prefers-reduced-motion: reduce) { .sk-strip, .sk-track { animation: none; } }
+
+/* richer content stage — a subtle inset frame + warm wash so the views sit on a
+   deliberate surface, not raw page (Aesthetic–usability, without hiding function) */
+#timeline .ages-map, #timeline .geo-map, #timeline .tree-view {
+  background:
+    radial-gradient(120% 100% at 50% 0%, color-mix(in oklab, var(--halo-gold,#cba233) 5%, transparent), transparent 60%);
+  border-radius: var(--radius-lg);
+}

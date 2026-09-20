@@ -74,7 +74,18 @@
     </div>
   </div>
 
-  <main id="timeline" class="ed-page" aria-live="polite"><!-- rendered by app.js --></main>
+  <main id="timeline" class="ed-page" aria-live="polite">
+    <!-- loading skeleton (Aesthetic–usability): a calm placeholder so the stage
+         never flashes empty; replaced by app.js once data + fonts are ready. -->
+    <div class="skeleton" aria-hidden="true">
+      <div class="sk-strip"></div>
+      <div class="sk-lane"><span class="sk-label"></span><span class="sk-track"></span></div>
+      <div class="sk-lane"><span class="sk-label"></span><span class="sk-track"></span></div>
+      <div class="sk-lane"><span class="sk-label"></span><span class="sk-track"></span></div>
+      <div class="sk-lane"><span class="sk-label"></span><span class="sk-track"></span></div>
+      <p class="sk-note">Loading the timeline…</p>
+    </div>
+  </main>
 
   <footer class="foot ed-page">
     <p>
