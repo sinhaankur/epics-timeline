@@ -301,6 +301,53 @@
     },
 
     {
+      "id": "proof-hastinapura-pgw",
+      "epic": "mahabharata",
+      "track": "proof",
+      "stance": "scholarship",
+      "title": "Hastināpura excavation & Painted Grey Ware",
+      "summary": "B. B. Lal's Archaeological Survey of India excavation at Hastināpura (Meerut dist., UP) in 1950–52 identified a Painted Grey Ware (PGW) occupation dated to roughly 1100–600 BCE, and found evidence of a flood layer. Lal correlated PGW with the Mahābhārata milieu and the Purāṇic flood that moved the capital to Kauśāmbī. This correlation is DEBATED — later scholars have proposed other pottery/dates (OCP, ~2000 BCE) and critiqued the original argument.",
+      "date": { "kind": "range", "startYear": -1100, "endYear": -600, "display": "PGW c. 1100–600 BCE", "confidence": "contested", "note": "PGW dating is solid; the PGW↔Mahābhārata correlation is contested. Recent dating at nearby sites complicates the picture." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Lal, B. B. (1954–55), 'Excavation at Hastināpura and other explorations in the Upper Gaṅgā and Sutlej basins 1950–52', Ancient India nos. 10–11, Bulletin of the ASI, pp. 5–151.", "kind": "paper", "url": null },
+        { "cite": "Wikipedia, 'Hastinapur' (overview + 2021–22 re-excavation) — for orientation, not as the primary source.", "kind": "reference", "url": "https://en.wikipedia.org/wiki/Hastinapur" }
+      ],
+      "proof": {
+        "what": "A dated Painted Grey Ware cultural layer (and a flood deposit) at a site tradition names as the Kaurava capital.",
+        "establishes": "That an Iron-Age (PGW) settlement existed here c. 1100–600 BCE, and that a flood episode is recorded in the stratigraphy.",
+        "doesNotEstablish": "That the Mahābhārata war happened, nor that PGW people are the epic's characters. The PGW↔epic link is an interpretation, and a contested one.",
+        "method": "Stratigraphic excavation + Painted Grey Ware ceramic seriation, with a few scientifically-dated samples.",
+        "methodKind": "archaeology"
+      },
+      "place": { "name": "Hastināpura, Meerut district, Uttar Pradesh", "lat": 29.159, "lon": 78.012 },
+      "links": [ { "to": "mbh-story-kurukshetra", "rel": "claimed-evidence-for" }, { "to": "tradition-archaeoastronomy", "rel": "contrasts-with" } ],
+      "tags": ["archaeology", "Painted Grey Ware", "ASI", "contested", "place"]
+    },
+    {
+      "id": "proof-sanauli-chariots",
+      "epic": "mahabharata",
+      "track": "proof",
+      "stance": "scholarship",
+      "title": "Sinauli cart/‘chariot’ burials",
+      "summary": "ASI excavations at Sinauli (Baghpat dist., UP) uncovered copper-decorated solid-wheeled carts and rich burials dated to roughly 2000–1800 BCE. Some popular accounts call these 'war chariots' and link them to the Mahābhārata; specialists caution the solid-wheel carts are not the spoke-wheeled chariots the epic describes, and the link is speculative.",
+      "date": { "kind": "range", "startYear": -2000, "endYear": -1800, "display": "c. 2000–1800 BCE", "confidence": "contested", "note": "The dating of the burials is archaeological; the 'chariot' interpretation and any Mahābhārata link are disputed." },
+      "storyOrder": null,
+      "sources": [
+        { "cite": "Sharma, S. K. et al., ASI Sinauli excavation reports (2018 season); summarised with cautions in academic reviews.", "kind": "paper", "url": null }
+      ],
+      "proof": {
+        "what": "Copper-fitted solid-wheeled carts and warrior burials of the early 2nd millennium BCE.",
+        "establishes": "A rich, possibly martial Bronze-Age burial culture in the western Gaṅgā–Yamunā doab.",
+        "doesNotEstablish": "That these are Mahābhārata 'chariots' or connected to the epic — the carts have solid, not spoked, wheels; the link is speculative.",
+        "method": "Stratigraphic excavation + typological dating; some radiocarbon context.",
+        "methodKind": "archaeology"
+      },
+      "place": { "name": "Sinauli, Baghpat district, Uttar Pradesh", "lat": 29.117, "lon": 77.2 },
+      "links": [ { "to": "proof-hastinapura-pgw", "rel": "compare" } ],
+      "tags": ["archaeology", "Bronze Age", "contested", "place"]
+    },
+    {
       "id": "proof-spitzer-manuscript",
       "epic": "mahabharata",
       "track": "proof",
@@ -315,7 +362,9 @@
       "proof": {
         "what": "An early manuscript fragment listing the epic's book-divisions.",
         "establishes": "That a recognisable Mahābhārata parvan structure existed by roughly the early centuries CE.",
-        "doesNotEstablish": "The date of original composition, nor the events' historicity."
+        "doesNotEstablish": "The date of original composition, nor the events' historicity.",
+        "method": "Palaeography (script dating) + archaeological context of the Kizil find.",
+        "methodKind": "palaeography"
       },
       "links": [ { "to": "mbh-oral-tradition", "rel": "evidence-for" } ],
       "tags": ["manuscript", "epigraphy"]
@@ -335,8 +384,11 @@
       "proof": {
         "what": "Dated monumental reliefs depicting Rāmāyaṇa episodes outside India.",
         "establishes": "That the narrative was widely known and depicted across Asia by the mid-first millennium CE.",
-        "doesNotEstablish": "A composition date for Vālmīki's text, nor historicity of events."
+        "doesNotEstablish": "A composition date for Vālmīki's text, nor historicity of events.",
+        "method": "Art-historical + architectural dating of the monuments (inscriptional & stylistic).",
+        "methodKind": "archaeology"
       },
+      "place": { "name": "Prambanan (Java) & Angkor (Cambodia)", "lat": -7.752, "lon": 110.491 },
       "links": [ { "to": "ram-valmiki-composition", "rel": "evidence-for" } ],
       "tags": ["archaeology", "reliefs", "diffusion"]
     }

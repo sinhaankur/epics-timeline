@@ -136,3 +136,70 @@
 @media (prefers-reduced-motion: reduce) {
   .node, .filter { transition: none; }
 }
+
+/* ============================================================================
+   THE AGES MAP — the deep-time creative view. Era bands + plotted markers on a
+   horizontal time axis. Uses the Gupta design tokens throughout. */
+.view-toggle { display: inline-flex; gap: 0; border: 1px solid var(--border-strong); border-radius: var(--radius-full); overflow: hidden; margin-top: var(--sp-4); }
+.view-toggle button {
+  font-family: var(--font-mono); font-size: var(--fs-2xs); letter-spacing: 0.04em;
+  padding: 7px 16px; background: var(--surface); color: var(--muted-foreground); border: none; cursor: pointer;
+}
+.view-toggle button.is-on { background: var(--accent); color: #fff; }
+
+.ages-map { margin: var(--sp-6) 0 var(--sp-8); }
+.age-strip { position: relative; height: 46px; margin: 0 0 2px; }
+.age-band {
+  position: absolute; top: 0; bottom: 0; padding: 5px 8px; overflow: hidden;
+  background: color-mix(in oklab, var(--tint) 26%, var(--card));
+  border-left: 1px solid color-mix(in oklab, var(--tint) 55%, transparent);
+  display: flex; flex-direction: column; justify-content: center; min-width: 0;
+}
+.age-name { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-xs); color: var(--foreground); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.age-range { font-family: var(--font-mono); font-size: 8.5px; color: var(--muted-foreground); white-space: nowrap; }
+
+.axis { position: relative; height: 20px; border-top: 1px solid var(--border-strong); margin-bottom: var(--sp-4); }
+.axis-tick { position: absolute; top: 3px; transform: translateX(-50%); font-family: var(--font-mono); font-size: 9px; color: var(--muted-foreground); white-space: nowrap; }
+
+.map-lanes { display: flex; flex-direction: column; gap: var(--sp-3); }
+.map-lane { display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: var(--sp-3); }
+.lane-label { font-family: var(--font-mono); font-size: var(--fs-3xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted-foreground); text-align: right; }
+.lane-track { position: relative; height: 34px; border-bottom: 1px dashed var(--border); }
+.lane-empty { font-family: var(--font-mono); font-size: 9px; color: var(--muted-foreground); font-style: italic; position: absolute; left: 0; top: 10px; }
+
+.marker-range { position: absolute; top: 15px; height: 3px; background: color-mix(in oklab, var(--accent) 30%, transparent); border-radius: 2px; }
+.map-marker {
+  position: absolute; top: 6px; transform: translateX(-50%); width: 13px; height: 13px;
+  background: none; border: none; padding: 0; cursor: pointer; z-index: 2;
+}
+.map-marker::before {
+  content: ""; display: block; width: 11px; height: 11px; margin: 1px auto;
+  background: var(--stance-scholarship); box-shadow: 0 0 0 3px var(--background);
+}
+.map-marker.stance-tradition::before { background: var(--stance-tradition); }
+.map-marker.is-contested::before { background: var(--stance-contested); }
+.mk-diamond::before { transform: rotate(45deg); width: 13px; height: 13px; border-radius: 2px; }
+.mk-dot::before { border-radius: 50%; }
+.mk-ring::before { border-radius: 50%; background: transparent !important; border: 2px solid var(--stance-tradition); box-shadow: 0 0 0 3px var(--background); }
+.map-marker:hover { z-index: 5; }
+.marker-flag {
+  position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%);
+  display: none; white-space: nowrap; background: var(--card); border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm); padding: 3px 8px; font-family: var(--font-sans); font-size: 11px;
+  color: var(--foreground); box-shadow: var(--shadow-md); max-width: 240px;
+}
+.marker-flag em { display: block; font-family: var(--font-mono); font-size: 9px; color: var(--accent-ink); font-style: normal; margin-top: 1px; }
+.map-marker:hover .marker-flag, .map-marker:focus-visible .marker-flag { display: block; }
+.map-marker:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.map-legend { margin-top: var(--sp-5); font-family: var(--font-mono); font-size: var(--fs-3xs); color: var(--muted-foreground); display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.map-legend .lg { display: inline-block; width: 11px; height: 11px; background: var(--stance-scholarship); vertical-align: middle; }
+.map-legend .lg.mk-diamond { transform: rotate(45deg); border-radius: 2px; }
+.map-legend .lg.mk-dot { border-radius: 50%; }
+.map-legend .lg.mk-ring { background: transparent; border: 2px solid var(--stance-tradition); border-radius: 50%; }
+.map-legend .lg.is-contested { background: var(--stance-contested); }
+
+@media (max-width: 720px) {
+  .map-lane { grid-template-columns: 74px 1fr; }
+  .lane-label { font-size: 8px; }
+}

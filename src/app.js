@@ -1,8 +1,11 @@
 /* Rāmāyaṇa & Mahābhārata — a cited, multi-track timeline.
- * Vanilla JS, no build step. Loads data/nodes.json and renders it, grouped by
- * track, with scholarship vs tradition kept visibly distinct. Every detail view
- * shows the node's sources and, where present, the proof and its limits.
+ * ES module, no build step. Loads data/nodes.json (+ ages.json) and renders it
+ * two ways: the TRACK LIST (grouped by track) and the AGES MAP (deep-time
+ * horizontal map), toggled in the header. Scholarship vs tradition stay visibly
+ * distinct; every detail view shows sources and the proof + its limits.
  * All original; the scholarship is cited to its authors in the data. */
+
+import { renderAgesMap } from "./ages-map.js";
 
 const TRACKS = [
   { key: "text",       title: "Textual & manuscript history", desc: "How the text itself grew — oral roots, layers, recensions, critical editions." },
@@ -12,21 +15,23 @@ const TRACKS = [
   { key: "proof",      title: "Proofs & evidence",            desc: "The concrete anchors people cite — with an honest note on what each does and does not establish." },
 ];
 
-const state = { epic: "all", track: "all", stance: "all", nodes: [] };
+const state = { epic: "all", track: "all", stance: "all", view: "map", nodes: [], ages: [] };
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
 
 async function load() {
   try {
-    const res = await fetch("data/nodes.json");
-    const data = await res.json();
+    const [nres, ares] = await Promise.all([fetch("data/nodes.json"), fetch("data/ages.json")]);
+    const data = await nres.json();
     state.nodes = data.nodes || [];
+    state.ages = (await ares.json()).ages || [];
   } catch (e) {
     document.getElementById("timeline").innerHTML =
       `<p class="empty">Could not load the data. Serve this folder over http (e.g. <code>python3 -m http.server</code>) rather than opening the file directly.</p>`;
     return;
   }
   wireFilters();
+  wireViewToggle();
   render();
 }
 
@@ -51,6 +56,8 @@ function render() {
   const root = document.getElementById("timeline");
   const shown = state.nodes.filter(passes);
   if (!shown.length) { root.innerHTML = `<p class="empty">No nodes match these filters.</p>`; return; }
+
+  if (state.view === "map") { renderAgesMap(root, shown, state.ages, openSheet); return; }
 
   const tracksToShow = state.track === "all" ? TRACKS : TRACKS.filter((t) => t.key === state.track);
   let html = "";
@@ -157,6 +164,18 @@ function wireFilters() {
   });
   document.getElementById("scrim").addEventListener("click", closeSheet);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSheet(); });
+}
+
+/* ---------- view toggle (Ages map ⇄ track list) ---------- */
+function wireViewToggle() {
+  document.querySelectorAll(".view-toggle button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      state.view = btn.dataset.view;
+      document.querySelectorAll(".view-toggle button").forEach((b) => b.classList.toggle("is-on", b === btn));
+      // the track filter only applies to the list view; show a hint by leaving it
+      render();
+    });
+  });
 }
 
 load();

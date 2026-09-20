@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "note": "Archaeological / historical ages of the Indian subcontinent, used as the deep-time backdrop for the map. Boundaries are approximate and scholarly — regions transitioned at different times. Shown so you can see WHEN, in real deep time, each text-layer, event and proof sits.",
+    "source": "Standard South-Asian archaeology periodisation (e.g. Bronze Age = Indus/Harappan; Iron Age = Painted Grey Ware / Vedic; etc.)."
+  },
+  "ages": [
+    { "id": "neolithic",  "name": "Neolithic",              "startYear": -7000, "endYear": -3300, "tint": "#d9c9a6", "note": "Early farming cultures (Mehrgarh)." },
+    { "id": "bronze",     "name": "Bronze Age (Indus)",     "startYear": -3300, "endYear": -1300, "tint": "#c99a34", "note": "Indus Valley / Harappan civilisation. Pre-dates the epics as texts." },
+    { "id": "iron",       "name": "Iron Age (Vedic)",       "startYear": -1300, "endYear": -600,  "tint": "#a8794a", "note": "Painted Grey Ware, later Vedic period — the milieu the epics look back to." },
+    { "id": "secondurban","name": "2nd Urbanisation",       "startYear": -600,  "endYear": -200,  "tint": "#8a9670", "note": "Mahājanapadas, early historic cities, Buddhism — the epics begin to be compiled." },
+    { "id": "classical",  "name": "Classical (Maurya→Gupta)","startYear": -200, "endYear": 600,   "tint": "#c8664a", "note": "Maurya, Kushan, Gupta. The epics reach their received textual form; the Gītā, Purāṇas." },
+    { "id": "earlymed",   "name": "Early Medieval",         "startYear": 600,   "endYear": 1200,  "tint": "#9e3b2e", "note": "Regional kingdoms; the epics spread across Asia (Prambanan, Angkor); Kambaṉ." },
+    { "id": "medieval",   "name": "Medieval / Early Modern", "startYear": 1200, "endYear": 1800,  "tint": "#7a5847", "note": "Bhakti retellings — Tulsīdās's Rāmcaritmānas." },
+    { "id": "modern",     "name": "Modern",                 "startYear": 1800,  "endYear": 2026,  "tint": "#2a4a7a", "note": "Critical editions (BORI, Baroda); modern scholarship, translation, film." }
+  ]
+}
