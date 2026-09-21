@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "title": "Signal vs accretion — how much is early, how much was added",
+    "note": "A story is not written once; it grows. This is the mainstream philological picture of what is EARLY-ATTESTED (the recoverable core) versus what most scholars regard as LATER ACCRETION, and what is simply UNKNOWABLE. It is a map of scholarly confidence, not a verdict on truth — and the tradition holds a different view (single sage-authors), shown elsewhere and not blurred here. Datings are ranges; reasonable scholars disagree at the edges.",
+    "confidenceScale": [
+      { "key": "core",    "label": "Early core",      "hint": "The oldest recoverable layer — attested early, structurally central." },
+      { "key": "grew",    "label": "Grew with the text", "hint": "Part of the epic as it expanded; neither the oldest core nor a clearly late graft." },
+      { "key": "added",   "label": "Later addition",   "hint": "Widely regarded by scholars as added after the core — framing books, didactic sections, appendices." },
+      { "key": "regional","label": "Regional / devotional accretion", "hint": "Added in specific retellings or traditions, centuries later." },
+      { "key": "unknown", "label": "Unknowable",       "hint": "The evidence does not let us say. We mark the gap rather than fill it." }
+    ]
+  },
+  "epics": [
+    {
+      "epic": "ramayana",
+      "title": "Rāmāyaṇa — the strata",
+      "whole": "~24,000 verses, 7 kāṇḍas (books)",
+      "layers": [
+        { "id": "ram-core", "name": "Books II–VI (Ayodhyā → Yuddha)", "confidence": "core", "share": 62,
+          "what": "The narrative core — exile, abduction, the search, the war. The oldest recoverable Rāmāyaṇa; Rāma here is a human hero, not yet fully divine.",
+          "why": "Structurally central, internally consistent, and the layer most free of the theological framing that Books I & VII add.",
+          "source": "Brockington, The Sanskrit Epics (1998); Goldman (gen. ed.), The Rāmāyaṇa of Vālmīki, intro vols." },
+        { "id": "ram-bala", "name": "Book I — Bāla Kāṇḍa", "confidence": "added", "share": 16,
+          "what": "Rāma's birth and childhood, and the framing that presents him as an avatāra of Viṣṇu.",
+          "why": "Widely regarded as a later addition: it carries the strongest divinity/theology, and sits awkwardly with the more human Rāma of the core.",
+          "source": "Brockington (1998); standard critical-edition introductions." },
+        { "id": "ram-uttara", "name": "Book VII — Uttara Kāṇḍa", "confidence": "added", "share": 16,
+          "what": "The aftermath — Sītā's banishment, Lava & Kuśa, Rāma's end; much of Rāvaṇa's backstory.",
+          "why": "Also widely held to be a later addition; several of its most-discussed episodes (Sītā's second exile) are absent from, or contradict, the core's ending.",
+          "source": "Brockington (1998); Goldman & Sutherland Goldman (Uttarakāṇḍa vol.)." },
+        { "id": "ram-regional", "name": "Regional retellings' additions", "confidence": "regional", "share": 6,
+          "what": "Episodes and figures added in later regional versions — e.g. the clown-god Semar and sons in the Javanese Kakawin, or the palace-politics emphasis of the Thai Ramakien.",
+          "why": "Absent from Vālmīki; introduced centuries later in specific cultures as the story was retold.",
+          "source": "Comparative studies of the Southeast-Asian Rāmāyaṇas." }
+      ]
+    },
+    {
+      "epic": "mahabharata",
+      "title": "Mahābhārata — the strata",
+      "whole": "~100,000 verses (the Śatasāhasrī Saṃhitā), 18 parvans + appendix",
+      "layers": [
+        { "id": "mbh-jaya", "name": "The ‘Jaya’ / Bhārata core", "confidence": "core", "share": 30,
+          "what": "The kernel — the Kuru succession dispute, the dice game, exile, and the 18-day war. Tradition itself remembers a shorter earlier text (‘Jaya’, then ‘Bhārata’) that grew into the Mahābhārata.",
+          "why": "The narrative spine around which everything else accretes; the epic's own frame verses distinguish it from the fuller text.",
+          "source": "Hiltebeitel, Rethinking the Mahābhārata (2001); Brockington (1998)." },
+        { "id": "mbh-didactic", "name": "Didactic parvans (Śānti, Anuśāsana)", "confidence": "added", "share": 34,
+          "what": "The vast teaching sections after the war — Bhīṣma's discourses on law, duty and liberation. Roughly a third of the whole text.",
+          "why": "Long recognised as a major later expansion: they halt the narrative for didactic material and swell the count toward 100,000 verses.",
+          "source": "Brockington (1998); Fitzgerald (Śānti Parva translation, intro)." },
+        { "id": "mbh-gita", "name": "Bhagavad Gītā", "confidence": "grew", "share": 2,
+          "what": "Kṛṣṇa's teaching to Arjuna on the eve of battle (Bhīṣma Parva) — later read as a standalone scripture.",
+          "why": "Part of the epic's growth; scholars debate whether it is original to the battle scene or an early insertion, so we mark it 'grew' rather than 'core' or clearly 'added'.",
+          "source": "Brockington (1998); debate summarised in Gītā scholarship." },
+        { "id": "mbh-harivamsha", "name": "Harivaṃśa (appendix)", "confidence": "added", "share": 14,
+          "what": "The ‘genealogy of Hari’ — Kṛṣṇa's life and lineage, appended as a khila (supplement) to the epic.",
+          "why": "Explicitly a supplement (khila), not one of the 18 parvans; a clear later attachment.",
+          "source": "Standard Mahābhārata textual histories; BORI critical edition." },
+        { "id": "mbh-frame", "name": "Frame stories & Purāṇic matter", "confidence": "added", "share": 20,
+          "what": "Nested frame-narrators (Ugraśravas → Śaunaka; Vaiśampāyana → Janamejaya), origin myths, tīrtha (pilgrimage) lists and genealogies woven throughout.",
+          "why": "The layered frames and encyclopaedic matter are widely read as accretions that turned a war-epic into a ‘complete’ compendium (‘what is here is everywhere…’).",
+          "source": "Hiltebeitel (2001); Brockington (1998)." }
+      ]
+    }
+  ]
+}

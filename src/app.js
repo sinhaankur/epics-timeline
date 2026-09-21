@@ -8,6 +8,7 @@
 import { renderAgesMap } from "./ages-map.js";
 import { renderGeoMap } from "./geo-map.js";
 import { renderTree } from "./tree-view.js";
+import { renderLayers } from "./layers-view.js";
 import { lotus, chakra, divider, illuminate } from "./ornament.js";
 import { SCENES, mountScene } from "./story-scene.js";
 
@@ -28,16 +29,17 @@ const TRACKS = [
   { key: "proof",      title: "Proofs & evidence",            desc: "The concrete anchors people cite — with an honest note on what each does and does not establish." },
 ];
 
-const state = { epic: "all", track: "all", stance: "all", view: "map", nodes: [], ages: [] };
+const state = { epic: "all", track: "all", stance: "all", view: "map", nodes: [], ages: [], layers: null };
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
 
 async function load() {
   try {
-    const [nres, ares] = await Promise.all([fetch("data/nodes.json"), fetch("data/ages.json")]);
+    const [nres, ares, lres] = await Promise.all([fetch("data/nodes.json"), fetch("data/ages.json"), fetch("data/layers.json")]);
     const data = await nres.json();
     state.nodes = data.nodes || [];
     state.ages = (await ares.json()).ages || [];
+    state.layers = await lres.json();
   } catch (e) {
     document.getElementById("timeline").innerHTML =
       `<p class="empty">Could not load the data. Serve this folder over http (e.g. <code>python3 -m http.server</code>) rather than opening the file directly.</p>`;
@@ -121,6 +123,7 @@ function render() {
   if (state.view === "map") { renderAgesMap(root, shown, state.ages, openSheet); return; }
   if (state.view === "geo") { renderGeoMap(root, shown, openSheet); return; }
   if (state.view === "tree") { renderTree(root, state.nodes, openSheet); return; }
+  if (state.view === "layers") { renderLayers(root, state.layers); return; }
 
   const tracksToShow = state.track === "all" ? TRACKS : TRACKS.filter((t) => t.key === state.track);
   let html = "";
